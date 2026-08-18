@@ -517,8 +517,9 @@ Arm & $n$ & round-1 recall & Misses \\
 \begin{tikzpicture}[font=\small, x=1.05cm, y=0.52cm]
 \draw[->] (0,0) -- (8.2,0);
 \foreach \x/\lab in {0/0,2/15,4/30,6/45,8/60}
-  \draw (\x,0.12) -- (\x,-0.12) node[below] {\lab};
-\node at (4.1,-0.95) {round-1 recall (fact-bearing)};
+  \draw (\x,0.12) -- (\x,-0.12) node[below=3pt] {\lab};
+\node[anchor=north] at (4.1,0) [yshift=-1.55cm]
+  {round-1 recall (fact-bearing)};
 \fill[red!55] (0,3.2) rectangle ({42*8/60},4.0);
 \node[anchor=east] at (-0.2,3.6) {\arm{A}};
 \fill[orange!60] (0,2.0) rectangle ({60*8/60},2.8);
