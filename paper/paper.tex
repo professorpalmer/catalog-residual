@@ -16,6 +16,8 @@
 \usepackage{tabularx}
 \usepackage{microtype}
 \usepackage{float}
+\usepackage{xurl}
+\setlength{\emergencystretch}{2em}
 
 \hypersetup{
   colorlinks=true,
@@ -447,8 +449,8 @@ production summarizer. Default execution uses no API keys
 The same cases, plus holdouts, run through a real pilot on OpenRouter.
 Default is dry-run. Live requires explicit \texttt{--live} and
 \texttt{--driver}. Drivers:
-\texttt{openrouter:openai/gpt-5.6-luna} and
-\texttt{openrouter:openai/gpt-5.6-sol}. Repeats $n{=}3$, seed frozen
+\path{openrouter:openai/gpt-5.6-luna} and
+\path{openrouter:openai/gpt-5.6-sol}. Repeats $n{=}3$, seed frozen
 in the receipt. Schema \texttt{compaction\_residual\_live/v2}.
 
 \paragraph{What we publish.}
@@ -632,7 +634,7 @@ still kept conflicting obligations. That hole is not catalog-only.
 Topic last-wins on story, stems, and vault retrieve (insert order)
 plus ack hygiene closed catalog reversal. Luna and Sol catalog
 \arm{C} are $3/3$ on unprefixed reversal after that cut
-(\texttt{*\_last\_wins\_noreverse\_*.json}). Unprefixed-obligation
+(last-wins noreverse receipts). Unprefixed-obligation
 without reversal stays $3/3$ on \arm{C}.
 
 The remaining hole was summary \arm{A}: the paid paragraph still saw
@@ -706,8 +708,8 @@ solved recap.''
   Redis'' failed a phrase check with residual recall $3/3$. We kept
   the oracle.
 \item Experimental cells are not in \texttt{live\_cases()}.
-  Factory-flip and last-wins receipts have
-  \texttt{claim\_ready=false} by construction
+  Factory-flip and last-wins receipts keep
+  \texttt{claim\_ready} false by construction
   (\texttt{suite\_incomplete}). That is intentional.
 \item Layer~0 arm~\arm{A} is a scripted omission control. Do not cite
   it as ``summarizers fail.''

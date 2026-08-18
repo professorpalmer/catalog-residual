@@ -49,12 +49,33 @@
     .btn.ghost:hover { border-color: #bdbdbd; background: #f3f3f1; }
     h2 { font-family: Georgia, serif; font-size: 21px; margin: 40px 0 12px; }
     .abstract { font-size: 16.5px; color: #2a2a2a; }
+    .abstract strong { color: var(--ink); }
     .findings { list-style: none; padding: 0; margin: 8px 0 0; }
     .findings li {
       background: var(--card); border: 1px solid var(--line); border-radius: 10px;
       padding: 16px 18px; margin-bottom: 12px;
     }
     .findings li b { color: var(--accent); }
+    .paper-fig {
+      margin: 22px 0 10px;
+    }
+    .paper-fig img {
+      display: block;
+      width: 100%;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+    .paper-fig.narrow img {
+      width: auto;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    .paper-fig figcaption {
+      font-size: 14.5px;
+      color: var(--muted);
+      margin: 8px 0 0;
+    }
     .pdf-frame {
       width: 100%; height: 920px; border: 1px solid var(--line); border-radius: 10px;
       margin-top: 14px; background: #fff;
@@ -104,7 +125,7 @@
       bounded <strong>extractive</strong> handle catalog, plus a last-wins
       selected story and a session-scoped SQLite FTS vault, serve as a
       factory-default residual without pretending that summarization is
-      obsolete? A claim-grade $11{\times}4{\times}3{\times}2$ factorial
+      obsolete? A claim-grade 11×4×3×2 factorial
       (264 trials, $1.23) shows complementarity: the summarizer keeps designed
       catalog-miss nonces and drops generic policy stems; the catalog keeps
       stems and drops nonce prose. Hybrid-plus-stems is the only compact
@@ -151,6 +172,20 @@
         to <code>live_cases()</code>. Summary stays a Settings opt-in.
       </li>
     </ul>
+
+    <h2>Figures</h2>
+    <figure class="paper-fig">
+      <img src="figures/planes.png" alt="Three planes after compact: residual, vault, and peek sidecar">
+      <figcaption>Figure 1. Three planes after compact. The residual is always in the next prompt. Vault retrieve is lexical. Peek is a dashed fallback.</figcaption>
+    </figure>
+    <figure class="paper-fig">
+      <img src="figures/lastwins.png" alt="Topic last-wins: later go-ahead evicts the older don’t-write; the one-word ack never enters">
+      <figcaption>Figure 2. Topic last-wins. Polarity words are stripped before overlap, so the later go-ahead evicts the older don’t-write. The one-word ack never enters the comparison.</figcaption>
+    </figure>
+    <figure class="paper-fig narrow">
+      <img src="figures/bars.png" alt="Claim-grade round-1 recall bars: A 42/60, B 60/60, C 54/60">
+      <figcaption>Figure 3. Claim-grade complementarity. Hybrid wins the ranking. Catalog still misses designed nonce prose. Not a default-flip argument.</figcaption>
+    </figure>
 
     <h2>Paper</h2>
     <iframe class="pdf-frame" src="paper.pdf" title="Extractive Residuals After Compaction PDF"></iframe>
