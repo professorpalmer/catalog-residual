@@ -585,27 +585,29 @@ We did not loosen the oracle to force $3/3$. We did not restamp
 
 \begin{figure}[t]
 \centering
+\resizebox{\linewidth}{!}{%
 \begin{tikzpicture}[
   font=\small,
-  box/.style={draw, rounded corners=2pt, align=center, inner sep=6pt, minimum height=1.15cm},
+  box/.style={draw, rounded corners=2pt, align=center, inner sep=5pt,
+              minimum height=1.05cm, minimum width=3.05cm},
   arrow/.style={-{Latex}, thick}
 ]
 \node[box, fill=black!4] (hist) {Session history $H$};
-\node[box, right=1.3cm of hist, fill=black!4] (comp) {Compact\\generation $g$};
-\node[box, above right=0.55cm and 1.4cm of comp, fill=red!8] (res) {Residual $R_g$\\catalog + story};
-\node[box, right=1.4cm of comp, fill=blue!6] (vault) {Vault $V_g$\\FTS5 + rowid};
-\node[box, below right=0.55cm and 1.4cm of comp, fill=orange!10] (peek) {Peek sidecar\\oldest+newest};
-\node[box, below=1.55cm of vault, fill=black!4] (ask) {Later ask $q$};
-\node[box, right=1.5cm of ask, fill=green!8] (inj) {Next prompt};
+\node[box, right=0.95cm of hist, fill=black!4] (comp) {Compact\\generation $g$};
+\node[box, right=1.25cm of comp, fill=blue!8] (vault) {Vault $V_g$\\FTS5 + rowid};
+\node[box, above=0.45cm of vault, fill=red!8] (res) {Residual $R_g$\\catalog + story};
+\node[box, below=0.45cm of vault, fill=orange!10] (peek) {Peek sidecar\\oldest$\rightarrow$newest};
+\node[box, below=0.65cm of peek, fill=black!6] (ask) {Later ask $q$};
+\node[box, right=1.15cm of ask, fill=green!8] (inj) {Next prompt};
 \draw[arrow] (hist) -- (comp);
-\draw[arrow] (comp) -- (res);
-\draw[arrow] (comp) -- (vault);
-\draw[arrow] (comp) -- (peek);
-\draw[arrow] (res.south) |- (inj.west);
+\draw[arrow] (comp.east) -- (vault.west);
+\draw[arrow] (comp.east) |- (res.west);
+\draw[arrow] (comp.east) |- (peek.west);
+\draw[arrow] (res.east) -- ++(0.7,0) |- (inj.north);
+\draw[arrow] (vault.west) -- ++(-0.4,0) |- (ask.west);
+\draw[arrow, dashed] (peek.south) -- (ask.north);
 \draw[arrow] (ask) -- (inj);
-\draw[arrow] (vault) -- (ask);
-\draw[arrow, dashed] (peek) -- (ask);
-\end{tikzpicture}
+\end{tikzpicture}}
 \caption{Three planes after compact. The residual is always in the next
 prompt. Vault retrieve is lexical (or recap-routed). Peek is a dashed
 fallback and is hidden in the isolation cells. \texttt{miss\_plan} is
@@ -615,19 +617,20 @@ intentionally absent.}
 
 \begin{figure}[t]
 \centering
-\begin{tikzpicture}[font=\small, x=1.15cm, y=0.55cm]
-\draw[->] (0,0) -- (8.4,0) node[right] {round-1 recall (fact-bearing)};
+\begin{tikzpicture}[font=\small, x=1.05cm, y=0.52cm]
+\draw[->] (0,0) -- (8.2,0);
 \foreach \x/\lab in {0/0,2/15,4/30,6/45,8/60}
   \draw (\x,0.12) -- (\x,-0.12) node[below] {\lab};
+\node at (4.1,-0.95) {round-1 recall (fact-bearing)};
 \fill[red!55] (0,3.2) rectangle ({42*8/60},4.0);
-\node[left] at (0,3.6) {\arm{A}};
+\node[anchor=east] at (-0.2,3.6) {\arm{A}};
 \fill[orange!60] (0,2.0) rectangle ({60*8/60},2.8);
-\node[left] at (0,2.4) {\arm{B}};
+\node[anchor=east] at (-0.2,2.4) {\arm{B}};
 \fill[blue!45] (0,0.8) rectangle ({54*8/60},1.6);
-\node[left] at (0,1.2) {\arm{C}};
-\node[font=\footnotesize, right] at ({42*8/60},3.6) {$42/60$};
-\node[font=\footnotesize, right] at ({60*8/60},2.4) {$60/60$};
-\node[font=\footnotesize, right] at ({54*8/60},1.2) {$54/60$};
+\node[anchor=east] at (-0.2,1.2) {\arm{C}};
+\node[font=\footnotesize, anchor=west] at ({42*8/60+0.12},3.6) {$42/60$};
+\node[font=\footnotesize, anchor=west] at ({60*8/60+0.12},2.4) {$60/60$};
+\node[font=\footnotesize, anchor=west] at ({54*8/60+0.12},1.2) {$54/60$};
 \end{tikzpicture}
 \caption{Claim-grade complementarity (Table~\ref{tab:claim}). Hybrid
 wins the ranking. Catalog still misses designed nonce prose. This
@@ -637,23 +640,24 @@ figure is not a default-flip argument.}
 
 \begin{figure}[t]
 \centering
+\resizebox{\linewidth}{!}{%
 \begin{tikzpicture}[
   font=\small,
-  line/.style={draw, align=left, inner sep=5pt, text width=7.4cm},
-  x=1cm, y=0.85cm
+  line/.style={draw, align=left, inner sep=6pt, text width=7.1cm}
 ]
-\node[line, fill=red!10] (a) at (0,3.2)
+\node[line, fill=red!10] (a)
   {don't write to the live ledger; east replica is the \textbf{only} sink.};
-\node[line, fill=black!6] (ack) at (0,2.1)
+\node[line, fill=black!6, below=0.42cm of a] (ack)
   {Assistant: \texttt{Reversed.} --- ack, not policy. Dropped from story
   and from summarizer input.};
-\node[line, fill=green!12] (b) at (0,0.9)
+\node[line, fill=green!12, below=0.42cm of ack] (b)
   {go ahead and write to the live ledger \textbf{now}; east replica is
   \textbf{retired}.};
-\draw[-{Latex}, thick] (a.east) ++(0.15,0) -- ++(0.7,0) |- ([xshift=0.15cm]b.east);
-\node[font=\footnotesize, text width=3.2cm, align=left]
-  at (5.9,2.1) {$\mathrm{overlap}/{\min}\ge 0.6$\\after dropping $D$\\$\Rightarrow$ evict older};
-\end{tikzpicture}
+\draw[-{Latex}, thick] (a.east) ++(0.12,0) -- ++(0.55,0)
+  |- ([xshift=0.12cm]b.east);
+\node[font=\footnotesize, text width=2.9cm, align=left, right=0.78cm of ack]
+  {$\mathrm{overlap}/{\min}\ge 0.6$\\after dropping $D$\\$\Rightarrow$ evict older};
+\end{tikzpicture}}
 \caption{Topic last-wins. Polarity words in $D$ are stripped before
 overlap, so ``don't/only'' versus ``now/retired'' still collide on
 \{\texttt{write},\texttt{live},\texttt{ledger},\texttt{east},\texttt{replica},\texttt{sink}\}.
