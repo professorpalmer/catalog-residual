@@ -1,4 +1,4 @@
-# Catalog, Not Summary
+# Extractive Residuals After Compaction
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Paper: CC BY 4.0](https://img.shields.io/badge/paper%20%26%20data-CC%20BY%204.0-lightgrey.svg)](LICENSE)
@@ -20,7 +20,7 @@ without claiming that summarization is obsolete.
 [`docs/paper.pdf`](docs/paper.pdf)).
 
 **Product.** The shipping seams live in
-[Marionette v0.9.244+](https://github.com/professorpalmer/marionette).
+[Marionette v0.9.245+](https://github.com/professorpalmer/marionette).
 This repo is the research surface that used to hang off that tree.
 
 ## The question
@@ -46,9 +46,11 @@ on two OpenRouter models (`gpt-5.6-luna`, `gpt-5.6-sol`), $n=3$.
   catalog+vault until compact wrote a selected story.
 - **`miss_plan` died on purpose.** Empty FTS dumping the compact-time
   user extract poisoned unrelated asks. Empty FTS is now empty.
-- **Default-worthy gate passed on both models.** 16 experimental cases,
+- **Factory-flip gate passed on both models.** 16 experimental cases,
   A vs C, 96 trials each (Luna \$0.082, Sol \$0.830). Factory residual
-  in Marionette is `catalog`. Summary and hybrid stay Settings opt-ins.
+  in Marionette v0.9.244 is `catalog`. Summary and hybrid stay Settings
+  opt-ins. v0.9.245 paints last-wins compact receipts and vault-cite
+  chips; that is a transcript surface, not a residual-algorithm change.
 - **Last-wins is part of the residual.** Topic overlap $0.6$ after
   polarity stripping; one-word acks (`Reversed.`, `Noted.`) never enter
   the story or the summarizer input. Summarizer last-wins then reached

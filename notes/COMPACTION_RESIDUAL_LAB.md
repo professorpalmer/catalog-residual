@@ -1,8 +1,13 @@
 # Compaction Residual Lab
 
 Whitepaper extension for the Layer-0 compaction-residual experiment. The
-factory residual is now `catalog` (v0.9.244). This note is the lab history
-that justified that flip, not a second product contract.
+factory residual is now `catalog` (v0.9.244). Marionette v0.9.245 then
+paints last-wins compact receipts and vault-cite chips; that is a
+transcript surface, not a residual-algorithm change. This note is the
+lab history that justified the factory flip, not a second product
+contract. The published paper title is *Extractive Residuals After
+Compaction*; the pre-registered A-versus-C cut is the factory-flip
+gate.
 
 ## Status and question
 
@@ -165,7 +170,7 @@ overhead within a predeclared budget.
 
 Layer-1 is a provider-backed protocol on the same research question. It does
 not claim that catalog plus retrieval beats LLM compaction. That protocol
-froze factory residual at `summary`. The later default-worthy gate (below)
+froze factory residual at `summary`. The later factory-flip gate (below)
 is what flipped empty/invalid `HARNESS_COMPACTION_RESIDUAL` to `catalog`.
 `off` is still never inferred.
 
@@ -618,7 +623,7 @@ tokens shorter than 3.
 That inventory is why catalog was not factory default yet. The cut below
 is what closed it.
 
-## Default-worthy gate (pre-registered, not claim_ready)
+## Factory-flip gate (pre-registered, not claim_ready)
 
 Catalog cannot be factory default while it is only an index. Vault is
 lookup. A later ask that shares no tokens with the buried line will
@@ -655,7 +660,7 @@ Pre-registered (write this before the live receipt exists):
   paraphrase. Empty/invalid `HARNESS_COMPACTION_RESIDUAL` maps to
   `catalog` only after both models pass.
 
-## Default-worthy results (Luna + Sol, n=3, not claim_ready)
+## Factory-flip results (Luna + Sol, n=3, not claim_ready)
 
 Receipts: `artifacts/compaction_residual_live_default_worthy_luna.json`
 ($0.082) and `*_sol.json` ($0.830). 16 cases, A vs C, 96 trials each.

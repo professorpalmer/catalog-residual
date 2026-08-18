@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it using the metadata below."
-title: "Catalog, Not Summary: Extractive Residuals and Last-Wins Retrieval as a Default-Worthy Compaction Gate"
+title: "Extractive Residuals After Compaction: Handle catalogs, last-wins story, and session-scoped vault retrieve"
 authors:
   - family-names: Palmer
     given-names: Cary
@@ -9,7 +9,7 @@ type: software
 license: CC-BY-4.0
 repository-code: "https://github.com/professorpalmer/catalog-residual"
 url: "https://professorpalmer.github.io/catalog-residual/"
-version: "0.1.0"
+version: "0.1.1"
 date-released: "2026-08-18"
 keywords:
   - compaction
@@ -20,7 +20,7 @@ keywords:
   - Marionette
 preferred-citation:
   type: article
-  title: "Catalog, Not Summary: Extractive Residuals and Last-Wins Retrieval as a Default-Worthy Compaction Gate"
+  title: "Extractive Residuals After Compaction: Handle catalogs, last-wins story, and session-scoped vault retrieve"
   authors:
     - family-names: Palmer
       given-names: Cary

@@ -21,7 +21,7 @@
   linkcolor=black,
   citecolor=black,
   urlcolor={rgb:red,0.70;green,0.11;blue,0.11},
-  pdftitle={Catalog, Not Summary},
+  pdftitle={Extractive Residuals After Compaction},
   pdfauthor={Cary Palmer}
 }
 
@@ -33,9 +33,9 @@
 \newcommand{\mode}[1]{\texttt{#1}}
 \newcommand{\metric}[1]{\textsc{#1}}
 
-\title{\textbf{Catalog, Not Summary}\\[0.35em]
-\large Extractive Residuals and Last-Wins Retrieval\\
-as a Default-Worthy Compaction Gate}
+\title{\textbf{Extractive Residuals After Compaction}\\[0.35em]
+\large Handle catalogs, last-wins story,\\
+and session-scoped vault retrieve}
 \author{Cary Palmer\\
 \textit{Independent Researcher}\\
 \texttt{https://professorpalmer.github.io/catalog-residual/}}
@@ -71,20 +71,21 @@ the fact and the $256$\,KB peek sidecar has already dropped the middle
 (Luna and Sol $3/3$ vault-on versus $0/3$ vault-off). It does not
 \emph{select}. Anaphoric recap and no-overlap paraphrase fail
 catalog-plus-vault until compact writes a selected story. A
-pre-registered default-worthy gate (16 experimental cases, \arm{A}
+pre-registered factory-flip gate (16 experimental cases, \arm{A}
 versus \arm{C}, 96 trials per model; Luna \$0.082, Sol \$0.830) then
 passes on both models. Factory residual in Marionette v0.9.244 is
-\mode{catalog}. Summary and hybrid remain Settings opt-ins. We do not
+\mode{catalog}. v0.9.245 then paints last-wins compact receipts and
+vault-cite chips on the transcript; that is a surface, not a residual
+algorithm change. Summary and hybrid remain Settings opt-ins. We do not
 restamp \texttt{claim\_ready} on the experimental cells, and we do not
 claim a universal ``stop summarizing.''
 \end{abstract}
 
-\tableofcontents
-\vspace{1em}
 \noindent\textit{Status.} Active lab note packaged as a preprint so others
 can review the receipts, reproduce the protocol, and disagree in public.
 This is not a claim that extractive residuals replace summarization in
-general agent systems.
+general agent systems. The title is deliberately not a ``$X$, not $Y$''
+slogan.
 
 \section{Introduction}
 \label{sec:intro}
@@ -116,7 +117,7 @@ The scientific contribution is not a new retrieval architecture. BM25
 over FTS5 is older than this author. The contribution is a
 \emph{measurement}: under a frozen deterministic protocol, which residual
 survives first compact, which channel recovers which miss, and which
-product cut is actually default-worthy. We keep the failures in the
+product cut can be the factory residual. We keep the failures in the
 record. Catalog-as-index died on recap and paraphrase. A heuristic
 \texttt{miss\_plan} dump poisoned empty-FTS asks. Last-wins had to be
 written into the story, the stems, the vault retrieve, and the
@@ -136,6 +137,15 @@ The shipping seams live in Marionette
 \texttt{harness/compaction\_vault.py}). This repository is the lab:
 battery, hermetic bench, live runner, published tables, and this paper.
 The product repo no longer hosts the 700-line lab note.
+Marionette v0.9.245 then surfaces what the residual already computed:
+a compact receipt that says ``Context compacted'' (never summarized),
+lists last-wins kept and dropped, and expands handle chips from a
+clipped SSE payload; a later overlapping ask that hits the vault emits
+\texttt{vault\_cite} as ``from compacted history.'' Recap cites plan or
+story after stripping the plan-chunk prefix. Empty FTS stays empty.
+Abort receipts stay abort notices. \texttt{peek\_history} stays a
+pilot tool. That cut does not change the residual algorithm and does
+not restamp \texttt{claim\_ready}.
 
 \section{Related work and positioning}
 \label{sec:related}
@@ -352,7 +362,7 @@ both end-task saturated at ${\ge}0.95$ (or all three compact arms
 round-1 saturated). Saturation is a fail because it means the probe
 cannot rank residuals.
 
-The later default-worthy gate is a \emph{different} pre-registration
+The later factory-flip gate is a \emph{different} pre-registration
 on experimental cells. It does not restamp \texttt{claim\_ready}. Pass
 requires \arm{C} end-task ${\ge}$ \arm{A} on narrative, paraphrase,
 twin, and cutoff; paraphrase \arm{C} ${\ge}2/3$; docs-only,
@@ -443,7 +453,7 @@ error tails) survive summary. Generic policy stems
 (\texttt{CONSTRAINT:}, \texttt{Decision:}, long-horizon copies) do
 not. Catalog keeps stems and drops nonce prose. That is the residual
 ranking. Production stayed \mode{summary} until the later
-default-worthy cut. We did not write a \texttt{winner} onto the
+factory-flip cut. We did not write a \texttt{winner} onto the
 receipt.
 
 \subsection{Vault: dump-and-query is complementary}
@@ -481,8 +491,8 @@ an unrelated invoice ask. Even summary-plus-vault contaminated
 (\arm{A} $0/3$ on the miss-wrong cell). \texttt{miss\_plan} died. Empty
 FTS is empty.
 
-\subsection{Default-worthy gate}
-\label{sec:default}
+\subsection{Factory-flip gate}
+\label{sec:factory-flip}
 
 Catalog cannot be factory default while it is only an index. The
 product cut: last-$N$ selected story on the catalog residual, user and
@@ -491,7 +501,7 @@ has distinctive content, no \texttt{miss\_plan}, tighter recap.
 
 \begin{table}[t]
 \centering
-\caption{Default-worthy end-task, $n{=}3$, peek hidden except the
+\caption{Factory-flip end-task, $n{=}3$, peek hidden except the
 evicted-cutoff cell. Both models pass the pre-registered gate.
 \texttt{claim\_ready} stays false on this slice
 (\texttt{suite\_incomplete}). Costs: Luna \$0.082, Sol \$0.830.}
@@ -667,7 +677,7 @@ Three statements survive the receipts.
   paraphrase fail until compact writes a story. Dumping the plan into
   empty FTS is contamination, not intelligence.
 \item \textbf{Catalog can be the factory residual once the story is in
-  the live window.} The default-worthy gate is that statement, on two
+  the live window.} The factory-flip gate is that statement, on two
   models, with honesty intact. Last-wins and ack hygiene are part of
   the residual, not a later prompt trick. Summary remains available
   for people who want a paid paragraph; it now pins the same story so
@@ -692,7 +702,7 @@ solved recap.''
   Redis'' failed a phrase check with residual recall $3/3$. We kept
   the oracle.
 \item Experimental cells are not in \texttt{live\_cases()}.
-  Default-worthy and last-wins receipts have
+  Factory-flip and last-wins receipts have
   \texttt{claim\_ready=false} by construction
   (\texttt{suite\_incomplete}). That is intentional.
 \item Layer~0 arm~\arm{A} is a scripted omission control. Do not cite
@@ -751,7 +761,7 @@ channels in one residual.
 
 The work is small, local, and reviewable. If the oracles are wrong,
 say so. If last-wins is too crude, patch it. If another harness
-replicates the default-worthy gate with a different model pair, that
+replicates the factory-flip gate with a different model pair, that
 is the contribution we actually want.
 
 \section*{Acknowledgments}
@@ -783,7 +793,7 @@ S.~Robertson and H.~Zaragoza.
 
 \bibitem{marionette}
 C.~Palmer.
-\newblock Marionette v0.9.244.
+\newblock Marionette v0.9.245.
 \newblock 2026.
 \newblock \url{https://github.com/professorpalmer/marionette}.
 
@@ -809,8 +819,8 @@ hybrid+stems Sol slice & 36 & 0.341 \\
 claim-grade Luna & 132 & 0.109 \\
 claim-grade Sol & 132 & 1.125 \\
 claim-grade merge & 264 & 1.234 \\
-default-worthy Luna & 96 & 0.082 \\
-default-worthy Sol & 96 & 0.830 \\
+factory-flip Luna & 96 & 0.082 \\
+factory-flip Sol & 96 & 0.830 \\
 summarizer last-wins Luna & 12 & 0.011 \\
 summarizer last-wins Sol & 12 & 0.094 \\
 \bottomrule
