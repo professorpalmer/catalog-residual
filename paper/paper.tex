@@ -15,6 +15,7 @@
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{microtype}
+\usepackage{float}
 
 \hypersetup{
   colorlinks=true,
@@ -202,6 +203,39 @@ H' = \mathrm{prefix} \,\Vert\, R_g \,\Vert\, \mathrm{tail}.
 A later user ask $q$ may also retrieve from a vault $V_g$ built from
 $M_g$ (and prior middles), and may call \texttt{peek\_history} on a
 bounded JSON sidecar that keeps oldest and newest rows only.
+Figure~\ref{fig:planes} is that split.
+
+\begin{figure}[H]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[
+  font=\small,
+  box/.style={draw, rounded corners=2pt, align=center, inner sep=5pt,
+              minimum height=1.05cm, minimum width=3.05cm},
+  arrow/.style={-{Latex}, thick}
+]
+\node[box, fill=black!4] (hist) {Session history $H$};
+\node[box, right=0.95cm of hist, fill=black!4] (comp) {Compact\\generation $g$};
+\node[box, right=1.25cm of comp, fill=blue!8] (vault) {Vault $V_g$\\FTS5 + rowid};
+\node[box, above=0.45cm of vault, fill=red!8] (res) {Residual $R_g$\\catalog + story};
+\node[box, below=0.45cm of vault, fill=orange!10] (peek) {Peek sidecar\\oldest$\rightarrow$newest};
+\node[box, below=0.65cm of peek, fill=black!6] (ask) {Later ask $q$};
+\node[box, right=1.15cm of ask, fill=green!8] (inj) {Next prompt};
+\draw[arrow] (hist) -- (comp);
+\draw[arrow] (comp.east) -- (vault.west);
+\draw[arrow] (comp.east) |- (res.west);
+\draw[arrow] (comp.east) |- (peek.west);
+\draw[arrow] (res.east) -- ++(0.7,0) |- (inj.north);
+\draw[arrow] (vault.west) -- ++(-0.4,0) |- (ask.west);
+\draw[arrow, dashed] (peek.south) -- (ask.north);
+\draw[arrow] (ask) -- (inj);
+\end{tikzpicture}}
+\caption{Three planes after compact. The residual is always in the next
+prompt. Vault retrieve is lexical (or recap-routed). Peek is a dashed
+fallback and is hidden in the isolation cells. \texttt{miss\_plan} is
+intentionally absent.}
+\label{fig:planes}
+\end{figure}
 
 \begin{definition}[Residual modes]
 \label{def:modes}
@@ -315,6 +349,34 @@ incoming line. One-word acks never enter the story or the summarizer
 input, so ``Reversed.'' cannot undo ``go ahead and write.''
 Unprefixed-obligation without a later reversal still keeps the first
 don't-write: there is no newer same-topic line to evict it.
+Figure~\ref{fig:lastwins} is the polarity-stripped collision.
+
+\begin{figure}[H]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[
+  font=\small,
+  line/.style={draw, align=left, inner sep=6pt, text width=7.1cm}
+]
+\node[line, fill=red!10] (a)
+  {don't write to the live ledger; east replica is the \textbf{only} sink.};
+\node[line, fill=black!6, below=0.42cm of a] (ack)
+  {Assistant: \texttt{Reversed.} --- ack, not policy. Dropped from story
+  and from summarizer input.};
+\node[line, fill=green!12, below=0.42cm of ack] (b)
+  {go ahead and write to the live ledger \textbf{now}; east replica is
+  \textbf{retired}.};
+\draw[-{Latex}, thick] (a.east) ++(0.12,0) -- ++(0.55,0)
+  |- ([xshift=0.12cm]b.east);
+\node[font=\footnotesize, text width=2.9cm, align=left, right=0.78cm of ack]
+  {$\mathrm{overlap}/{\min}\ge 0.6$\\after dropping $D$\\$\Rightarrow$ evict older};
+\end{tikzpicture}}
+\caption{Topic last-wins. Polarity words in $D$ are stripped before
+overlap, so ``don't/only'' versus ``now/retired'' still collide on
+\{\texttt{write},\texttt{live},\texttt{ledger},\texttt{east},\texttt{replica},\texttt{sink}\}.
+The one-word ack never enters the comparison.}
+\label{fig:lastwins}
+\end{figure}
 
 \subsection{Live arms and suites}
 \label{sec:arms}
@@ -322,7 +384,7 @@ don't-write: there is no newer same-topic line to evict it.
 Layer~0 (hermetic) and Layer~1 (live) reuse the same case objects but
 not the same arm letters.
 
-\begin{table}[t]
+\begin{table}[ht]
 \centering
 \caption{Live residual arms. Archive is on for \arm{A}--\arm{C}. The
 runner never scripts \texttt{peek\_history}; the pilot decides.}
@@ -430,7 +492,7 @@ repeats $\times$ $2$ models $= 264$ ok rows (Luna \$0.109, Sol
 $0/24$. \texttt{evaluate\_live\_gates} on the merge:
 \texttt{claim\_ready=true}.
 
-\begin{table}[t]
+\begin{table}[ht]
 \centering
 \caption{Claim-grade fact-bearing \metric{residual\_recall\_round1}
 (excludes negative control). Hybrid+stems is the only compact residual
@@ -448,6 +510,29 @@ Arm & $n$ & round-1 recall & Misses \\
 \end{tabular}
 \end{table}
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[font=\small, x=1.05cm, y=0.52cm]
+\draw[->] (0,0) -- (8.2,0);
+\foreach \x/\lab in {0/0,2/15,4/30,6/45,8/60}
+  \draw (\x,0.12) -- (\x,-0.12) node[below] {\lab};
+\node at (4.1,-0.95) {round-1 recall (fact-bearing)};
+\fill[red!55] (0,3.2) rectangle ({42*8/60},4.0);
+\node[anchor=east] at (-0.2,3.6) {\arm{A}};
+\fill[orange!60] (0,2.0) rectangle ({60*8/60},2.8);
+\node[anchor=east] at (-0.2,2.4) {\arm{B}};
+\fill[blue!45] (0,0.8) rectangle ({54*8/60},1.6);
+\node[anchor=east] at (-0.2,1.2) {\arm{C}};
+\node[font=\footnotesize, anchor=west] at ({42*8/60+0.12},3.6) {$42/60$};
+\node[font=\footnotesize, anchor=west] at ({60*8/60+0.12},2.4) {$60/60$};
+\node[font=\footnotesize, anchor=west] at ({54*8/60+0.12},1.2) {$54/60$};
+\end{tikzpicture}
+\caption{Claim-grade complementarity (Table~\ref{tab:claim}). Hybrid
+wins the ranking. Catalog still misses designed nonce prose. This
+figure is not a default-flip argument.}
+\label{fig:bars}
+\end{figure}
+
 Distinctive identifiers (\texttt{nonce\_write\_constraint}, handles,
 error tails) survive summary. Generic policy stems
 (\texttt{CONSTRAINT:}, \texttt{Decision:}, long-horizon copies) do
@@ -462,7 +547,7 @@ receipt.
 Science claim: catalog can miss plain prose; vault retrieve should
 still return it when the ask overlaps.
 
-\begin{table}[t]
+\begin{table}[ht]
 \centering
 \caption{Lexical vault isolation, peek hidden or peek-evicted, $n{=}3$.
 Not \texttt{claim\_ready}.}
@@ -499,7 +584,7 @@ product cut: last-$N$ selected story on the catalog residual, user and
 assistant, skip residuals and acks, keep ``docs only'' when the line
 has distinctive content, no \texttt{miss\_plan}, tighter recap.
 
-\begin{table}[t]
+\begin{table}[ht]
 \centering
 \caption{Factory-flip end-task, $n{=}3$, peek hidden except the
 evicted-cutoff cell. Both models pass the pre-registered gate.
@@ -557,7 +642,7 @@ summarizer input; later decisions replace earlier ones in the system
 prompt; pin \texttt{\#\#\# Selected story} after a good LLM / hybrid /
 fallback so a lying paragraph cannot hide the later go-ahead.
 
-\begin{table}[t]
+\begin{table}[ht]
 \centering
 \caption{Summarizer last-wins, $n{=}3$. All compact rounds were real
 LLM summaries (\texttt{mode=llm}). Costs: Luna \$0.011, Sol \$0.094.
@@ -579,91 +664,6 @@ unprefixed obligation & $3/3$ & $3/3$ & $3/3$ & $3/3$ \\
 We did not loosen the oracle to force $3/3$. We did not restamp
 \texttt{claim\_ready}. We did not add these cells to
 \texttt{live\_cases()}.
-
-\section{Figures}
-\label{sec:figures}
-
-\begin{figure}[t]
-\centering
-\resizebox{\linewidth}{!}{%
-\begin{tikzpicture}[
-  font=\small,
-  box/.style={draw, rounded corners=2pt, align=center, inner sep=5pt,
-              minimum height=1.05cm, minimum width=3.05cm},
-  arrow/.style={-{Latex}, thick}
-]
-\node[box, fill=black!4] (hist) {Session history $H$};
-\node[box, right=0.95cm of hist, fill=black!4] (comp) {Compact\\generation $g$};
-\node[box, right=1.25cm of comp, fill=blue!8] (vault) {Vault $V_g$\\FTS5 + rowid};
-\node[box, above=0.45cm of vault, fill=red!8] (res) {Residual $R_g$\\catalog + story};
-\node[box, below=0.45cm of vault, fill=orange!10] (peek) {Peek sidecar\\oldest$\rightarrow$newest};
-\node[box, below=0.65cm of peek, fill=black!6] (ask) {Later ask $q$};
-\node[box, right=1.15cm of ask, fill=green!8] (inj) {Next prompt};
-\draw[arrow] (hist) -- (comp);
-\draw[arrow] (comp.east) -- (vault.west);
-\draw[arrow] (comp.east) |- (res.west);
-\draw[arrow] (comp.east) |- (peek.west);
-\draw[arrow] (res.east) -- ++(0.7,0) |- (inj.north);
-\draw[arrow] (vault.west) -- ++(-0.4,0) |- (ask.west);
-\draw[arrow, dashed] (peek.south) -- (ask.north);
-\draw[arrow] (ask) -- (inj);
-\end{tikzpicture}}
-\caption{Three planes after compact. The residual is always in the next
-prompt. Vault retrieve is lexical (or recap-routed). Peek is a dashed
-fallback and is hidden in the isolation cells. \texttt{miss\_plan} is
-intentionally absent.}
-\label{fig:planes}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\begin{tikzpicture}[font=\small, x=1.05cm, y=0.52cm]
-\draw[->] (0,0) -- (8.2,0);
-\foreach \x/\lab in {0/0,2/15,4/30,6/45,8/60}
-  \draw (\x,0.12) -- (\x,-0.12) node[below] {\lab};
-\node at (4.1,-0.95) {round-1 recall (fact-bearing)};
-\fill[red!55] (0,3.2) rectangle ({42*8/60},4.0);
-\node[anchor=east] at (-0.2,3.6) {\arm{A}};
-\fill[orange!60] (0,2.0) rectangle ({60*8/60},2.8);
-\node[anchor=east] at (-0.2,2.4) {\arm{B}};
-\fill[blue!45] (0,0.8) rectangle ({54*8/60},1.6);
-\node[anchor=east] at (-0.2,1.2) {\arm{C}};
-\node[font=\footnotesize, anchor=west] at ({42*8/60+0.12},3.6) {$42/60$};
-\node[font=\footnotesize, anchor=west] at ({60*8/60+0.12},2.4) {$60/60$};
-\node[font=\footnotesize, anchor=west] at ({54*8/60+0.12},1.2) {$54/60$};
-\end{tikzpicture}
-\caption{Claim-grade complementarity (Table~\ref{tab:claim}). Hybrid
-wins the ranking. Catalog still misses designed nonce prose. This
-figure is not a default-flip argument.}
-\label{fig:bars}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\resizebox{\linewidth}{!}{%
-\begin{tikzpicture}[
-  font=\small,
-  line/.style={draw, align=left, inner sep=6pt, text width=7.1cm}
-]
-\node[line, fill=red!10] (a)
-  {don't write to the live ledger; east replica is the \textbf{only} sink.};
-\node[line, fill=black!6, below=0.42cm of a] (ack)
-  {Assistant: \texttt{Reversed.} --- ack, not policy. Dropped from story
-  and from summarizer input.};
-\node[line, fill=green!12, below=0.42cm of ack] (b)
-  {go ahead and write to the live ledger \textbf{now}; east replica is
-  \textbf{retired}.};
-\draw[-{Latex}, thick] (a.east) ++(0.12,0) -- ++(0.55,0)
-  |- ([xshift=0.12cm]b.east);
-\node[font=\footnotesize, text width=2.9cm, align=left, right=0.78cm of ack]
-  {$\mathrm{overlap}/{\min}\ge 0.6$\\after dropping $D$\\$\Rightarrow$ evict older};
-\end{tikzpicture}}
-\caption{Topic last-wins. Polarity words in $D$ are stripped before
-overlap, so ``don't/only'' versus ``now/retired'' still collide on
-\{\texttt{write},\texttt{live},\texttt{ledger},\texttt{east},\texttt{replica},\texttt{sink}\}.
-The one-word ack never enters the comparison.}
-\label{fig:lastwins}
-\end{figure}
 
 \section{Interpretation}
 \label{sec:interp}
