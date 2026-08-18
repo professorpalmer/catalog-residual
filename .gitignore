@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+paper/_build/
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc
+*.synctex.gz
+.env
+results/*.sqlite
+artifacts/*.json
+!data/published_tables.json

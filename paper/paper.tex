@@ -1,0 +1,846 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{times}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,shapes.geometric}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{microtype}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor={rgb:red,0.70;green,0.11;blue,0.11},
+  pdftitle={Catalog, Not Summary},
+  pdfauthor={Cary Palmer}
+}
+
+\newtheorem{definition}{Definition}
+\newtheorem{claim}{Claim}
+\newtheorem{observation}{Observation}
+
+\newcommand{\arm}[1]{\textsf{#1}}
+\newcommand{\mode}[1]{\texttt{#1}}
+\newcommand{\metric}[1]{\textsc{#1}}
+
+\title{\textbf{Catalog, Not Summary}\\[0.35em]
+\large Extractive Residuals and Last-Wins Retrieval\\
+as a Default-Worthy Compaction Gate}
+\author{Cary Palmer\\
+\textit{Independent Researcher}\\
+\texttt{https://professorpalmer.github.io/catalog-residual/}}
+\date{August 18, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Long-running agent chats compact older turns so the next prompt fits a
+context window. The usual residual left behind is a paid language-model
+paragraph. We ask a narrower question than ``should agents stop
+summarizing?'': can a bounded \emph{extractive} handle catalog, plus a
+last-wins selected story and a session-scoped SQLite FTS vault, serve as
+a factory-default residual without pretending that summarization is
+obsolete?
+
+We report two layers of evidence from the Marionette coding harness.
+Layer~0 is a hermetic battery (no API keys) scored by substring oracles.
+Layer~1 is a provider-backed protocol on two OpenRouter models
+(\texttt{gpt-5.6-luna}, \texttt{gpt-5.6-sol}), $n{=}3$, frozen scorer
+\texttt{end\_task/v2}, no LLM-as-judge. A claim-grade
+$11{\times}4{\times}3{\times}2$ factorial (264 trials, \$1.23 provider
+cost) shows complementarity: the summarizer keeps designed catalog-miss
+nonces and drops generic policy stems; the catalog keeps stems and drops
+nonce prose. Hybrid-plus-stems is the only compact residual that keeps
+both on the primary metric \metric{residual\_recall\_round1}
+(\arm{B} $60/60$ fact-bearing versus \arm{A} $42/60$ versus \arm{C}
+$54/60$). That ranking is not a default flip.
+
+Dump-and-query uniquely recovers buried prose when the later ask overlaps
+the fact and the $256$\,KB peek sidecar has already dropped the middle
+(Luna and Sol $3/3$ vault-on versus $0/3$ vault-off). It does not
+\emph{select}. Anaphoric recap and no-overlap paraphrase fail
+catalog-plus-vault until compact writes a selected story. A
+pre-registered default-worthy gate (16 experimental cases, \arm{A}
+versus \arm{C}, 96 trials per model; Luna \$0.082, Sol \$0.830) then
+passes on both models. Factory residual in Marionette v0.9.244 is
+\mode{catalog}. Summary and hybrid remain Settings opt-ins. We do not
+restamp \texttt{claim\_ready} on the experimental cells, and we do not
+claim a universal ``stop summarizing.''
+\end{abstract}
+
+\tableofcontents
+\vspace{1em}
+\noindent\textit{Status.} Active lab note packaged as a preprint so others
+can review the receipts, reproduce the protocol, and disagree in public.
+This is not a claim that extractive residuals replace summarization in
+general agent systems.
+
+\section{Introduction}
+\label{sec:intro}
+
+Agent products now run multi-hour coding sessions. The context window is
+finite. The usual engineering move is to \emph{compact}: drop the middle
+of the transcript and leave a residual that the next turn can read.
+Industry practice, including this author's own earlier default, is to
+pay a language model to write that residual as a causal paragraph
+(``what we were doing / what is resolved / what is open / key facts'').
+
+That paragraph has three structural problems. First, it is a second
+generation of the session, billed on every Compact Now. Second, it is a
+\emph{selection} that the later model cannot audit except by paying
+again. Third, it is easy for a one-word assistant ack such as
+``Reversed.'' to look like a rollback when the later user turn was
+``go ahead and write.''
+
+This paper is the lab history behind a product flip that is already
+shipped: Marionette v0.9.244 made \mode{catalog} the factory residual.
+The flip is narrower than a slogan. Catalog is an extractive handle
+index plus a last-$N$ selected story. A session-scoped SQLite FTS vault
+retrieves overlapping slices on later lexical asks. Summary and hybrid
+stay Settings opt-ins. Empty or invalid
+\texttt{HARNESS\_COMPACTION\_RESIDUAL} maps to \mode{catalog}, never to
+\mode{off}.
+
+The scientific contribution is not a new retrieval architecture. BM25
+over FTS5 is older than this author. The contribution is a
+\emph{measurement}: under a frozen deterministic protocol, which residual
+survives first compact, which channel recovers which miss, and which
+product cut is actually default-worthy. We keep the failures in the
+record. Catalog-as-index died on recap and paraphrase. A heuristic
+\texttt{miss\_plan} dump poisoned empty-FTS asks. Last-wins had to be
+written into the story, the stems, the vault retrieve, and the
+summarizer input before a later go-ahead beat an earlier don't-write.
+
+\paragraph{What we are not claiming.}
+We are not claiming that summarization is dead, that FTS is a semantic
+memory, that $n{=}3$ on two models is a field result, or that
+\texttt{claim\_ready} now covers the experimental last-wins cells. Those
+cells stay outside \texttt{live\_cases()}. The factory flip is a product
+decision licensed by a pre-registered gate, not a restamped ranking
+receipt.
+
+\paragraph{Companion product.}
+The shipping seams live in Marionette
+(\texttt{harness/compaction\_residual.py},
+\texttt{harness/compaction\_vault.py}). This repository is the lab:
+battery, hermetic bench, live runner, published tables, and this paper.
+The product repo no longer hosts the 700-line lab note.
+
+\section{Related work and positioning}
+\label{sec:related}
+
+\paragraph{Compaction as summarization.}
+Commercial coding agents compact by asking a model to rewrite history.
+The residual is usually a four-heading snapshot. That is a reasonable
+default when the alternative is an unbounded transcript. It is a poor
+default if the buried facts are already handle-shaped (paths, URIs,
+error stems) and the paid paragraph drops generic policy
+(\texttt{CONSTRAINT: never write to production.db}) while keeping a
+nonce it happened to copy.
+
+\paragraph{Memory as retrieval.}
+MemGPT-style OS paging, RAG over session logs, and ``memory files'' all
+treat the window as a cache over durable state. Our vault is the small
+end of that family: session-scoped FTS5, $4000$ chunks / $8$\,MB,
+Porter tokenizer, no cross-session graph, no wiki write. It is
+dump-and-query, not a second agent.
+
+\paragraph{State, not tokens.}
+A companion paper argued that repository-scale reasoning is bound by
+state architecture rather than nominal context length
+\cite{palmer2026state}. This note is the same thesis applied to
+\emph{chat residuals}: the working set should be handles and a selected
+story, with retrieve for lexical overlap, not a growing paragraph that
+pretends to be the session.
+
+\paragraph{Last-wins in policy text.}
+Dialogue state tracking and belief tracking have long treated later
+slots as authoritative. We use a cheap set-overlap rule on content
+nouns after polarity stripping (Section~\ref{sec:lastwins}). It is not
+NLI. It is enough to drop ``don't write / only sink'' once ``write now /
+east replica is retired'' arrives, and it is honest about the ack
+``Reversed.'' not being a policy.
+
+\paragraph{Scoring.}
+We refuse LLM-as-judge. Every metric is a function of (labeled case,
+residual or final answer, substring oracle). That is stricter than
+preference eval and weaker than an unforgeable compiler oracle
+\cite{palmer2026state}. The honesty holdout (absent token must not be
+invented) is the closest we get to an unforgeable negative.
+
+\section{Problem formulation}
+\label{sec:problem}
+
+A conversation is a sequence of messages $H = (m_1,\ldots,m_T)$.
+Compaction at generation $g$ partitions $H$ into a kept prefix, an
+elided middle $M_g$, and a live tail. The residual $R_g$ is a string
+injected in place of $M_g$. The next prompt is then
+\[
+H' = \mathrm{prefix} \,\Vert\, R_g \,\Vert\, \mathrm{tail}.
+\]
+A later user ask $q$ may also retrieve from a vault $V_g$ built from
+$M_g$ (and prior middles), and may call \texttt{peek\_history} on a
+bounded JSON sidecar that keeps oldest and newest rows only.
+
+\begin{definition}[Residual modes]
+\label{def:modes}
+Marionette exposes four residuals. Empty or unknown env values resolve
+to \mode{catalog}; \mode{off} is never inferred.
+\begin{itemize}[leftmargin=1.2em,itemsep=0.25em]
+\item \mode{summary}: paid LLM four-heading snapshot
+  (Historical Task / Resolved / Pending / Key Facts).
+\item \mode{catalog}: extractive handle index plus last-$N$ selected
+  story. Factory default as of v0.9.244.
+\item \mode{hybrid}: real LLM snapshot plus a capped unique-handle
+  appendix. Timeout or degenerate output falls back to extractive
+  snapshot plus handles.
+\item \mode{off}: no compaction. Test ceiling only.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Primary live metric]
+\label{def:r1}
+\metric{residual\_recall\_round1} is true iff the residual after the
+\emph{first} compact contains every \texttt{must\_contain} token of the
+labeled case (all-of, not any-of). Arm~\arm{D} never compacts, so its
+round-1 residual recall is defined as $0$; rank \arm{D} on final
+\metric{residual\_recall} of the raw transcript.
+\end{definition}
+
+End-task success is a second, easier metric: the model's final answer
+after the probe must satisfy the same substring oracle. Catalog plus
+peek can pass end-task while failing residual recall. That is why
+end-task saturation is a \emph{fail} on the claim-grade gate
+(Section~\ref{sec:gates}), not a win.
+
+\section{Method}
+\label{sec:method}
+
+\subsection{Handle catalog}
+\label{sec:catalog}
+
+The catalog is deterministic. From the elided middle it harvests unique
+files, tool names, durable URIs (\texttt{spill://},
+\texttt{artifact://}, \texttt{job://}), error/decision/constraint stems,
+hyphenated fact tokens with a digit and at least two separators, and a
+selected story. Closed-loop ingest re-extracts catalog and hybrid
+bullets so a second compact does not drop handles that only survived as
+residual text. Stems use last-wins eviction at a cap of ten. Facts
+exclude file-stem lookalikes such as \texttt{auth\_legacy\_v1}. Copied
+text is redacted for likely secrets.
+
+The catalog is \emph{not} a turn log and does not invent peek offsets.
+A designed miss remains possible for prose that has no handle shape and
+is not selected into the story. That miss is why the vault exists.
+
+\subsection{Selected story}
+\label{sec:story}
+
+Selection happens at compact time or it does not happen. The story is
+the newest distinctive user and assistant lines, skipping injected
+residuals, one-word acks, handle-shaped chatter, and lab-shaped filler,
+then applying topic last-wins (Section~\ref{sec:lastwins}), a novelty
+filter, and a $12$-line / $1800$-character newest-fit. After a
+successful LLM summary, a hybrid handle-index, or an extractive
+fallback, the same story is pinned under
+\texttt{\#\#\# Selected story} so a lying paragraph cannot hide the
+later policy.
+
+This is the cut that killed \texttt{miss\_plan}. Empty FTS is now empty.
+A later paraphrase that shares no tokens with the buried line still
+works if the story already contains the fact. That is selection, not
+retrieval.
+
+\subsection{Vault retrieve}
+\label{sec:vault}
+
+The $256$\,KB JSON peek sidecar cannot hold a $1$M-token dump. Compact
+also indexes the elided middle into \texttt{compaction\_vault.sqlite}
+(FTS5, session-scoped, $4000$ chunks / $8$\,MB). A later ask $q$ is
+turned into an OR of distinctive tokens of length at least $3$, minus a
+small stop list:
+\[
+\mathrm{match}(q) = \bigvee_{t \in \mathrm{tokens}(q)} ``t".
+\]
+Hits are BM25-ordered, then re-sorted by insert \texttt{rowid}, then
+passed through topic last-wins so an older obligation on the same nouns
+loses to a newer one. Recap asks
+(\texttt{remind me} / \texttt{what did we decide} / \ldots) retrieve a
+compact-time plan chunk instead of lexical FTS. Empty FTS stays empty.
+The inject is a bounded section, not a second transcript.
+
+Peek remains the addressable oldest+newest log. Vault is the
+dump-and-query plane. They are complementary. Peek-evicted mid-history
+prose is the cell that isolates the vault: $84904 \to 269$ extractive
+tokens, \$0 summarizer, vault-on $3/3$, vault-off peek miss $0/3$
+(Section~\ref{sec:vault-results}).
+
+\subsection{Topic last-wins}
+\label{sec:lastwins}
+
+Let $\tau(x)$ be the set of length-${\ge}4$ alphanumeric tokens in
+lowercase $x$, minus stop words and a polarity drop-set
+\[
+D = \{\texttt{dont},\texttt{never},\texttt{only},\texttt{ahead},
+\texttt{now},\texttt{retired},\texttt{instead},\texttt{reversed},\ldots\}.
+\]
+Two lines $a$ (older) and $b$ (newer) are the same topic when
+\[
+\frac{|\tau(a)\cap\tau(b)|}{\min\bigl(|\tau(a)|,|\tau(b)|\bigr)} \ge 0.6
+\quad\text{and}\quad \min\bigl(|\tau(a)|,|\tau(b)|\bigr) \ge 2.
+\]
+A left-to-right scan drops every kept line that shares a topic with the
+incoming line. One-word acks never enter the story or the summarizer
+input, so ``Reversed.'' cannot undo ``go ahead and write.''
+Unprefixed-obligation without a later reversal still keeps the first
+don't-write: there is no newer same-topic line to evict it.
+
+\subsection{Live arms and suites}
+\label{sec:arms}
+
+Layer~0 (hermetic) and Layer~1 (live) reuse the same case objects but
+not the same arm letters.
+
+\begin{table}[t]
+\centering
+\caption{Live residual arms. Archive is on for \arm{A}--\arm{C}. The
+runner never scripts \texttt{peek\_history}; the pilot decides.}
+\label{tab:arms}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Arm & Residual & Notes \\
+\midrule
+\arm{A} & \mode{summary} + archive & Paid paragraph \\
+\arm{B} & \mode{hybrid} + archive & Paragraph + handle appendix \\
+\arm{C} & \mode{catalog} + archive & Factory candidate \\
+\arm{D} & \mode{off} & Uncompacted ceiling \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\texttt{live\_cases()} is the core seven plus four holdouts (absent
+token, long-horizon constraint, distractor-plus-absent, nonce write
+sink). Experimental cells (vault prose, recap, last-wins, selector
+adversaries) are opt-in via \texttt{--case} and are not in
+\texttt{live\_cases()}. Adding them would change \texttt{claim\_ready}.
+We did not.
+
+\subsection{Pre-registered gates}
+\label{sec:gates}
+
+The live scorer is frozen as \texttt{end\_task/v2}. Receipts persist
+\texttt{residual\_text}, \texttt{residual\_recall\_round1}, and
+\texttt{final\_answer}. There is no \texttt{winner} field.
+
+\texttt{claim\_ready} is true only when all of the following hold: two
+distinct models; a full factorial of \texttt{live\_cases()} $\times$
+arms $\times$ $3$ repeats; every ok row has residual text and a final
+answer; honesty holdouts do not invent the absent token; peek stale-tax
+on \arm{C} is ${\le}0.25$ when peek is used; summary and hybrid are not
+both end-task saturated at ${\ge}0.95$ (or all three compact arms
+round-1 saturated). Saturation is a fail because it means the probe
+cannot rank residuals.
+
+The later default-worthy gate is a \emph{different} pre-registration
+on experimental cells. It does not restamp \texttt{claim\_ready}. Pass
+requires \arm{C} end-task ${\ge}$ \arm{A} on narrative, paraphrase,
+twin, and cutoff; paraphrase \arm{C} ${\ge}2/3$; docs-only,
+assistant-only, and cap last-wins \arm{C} ${\ge}2/3$; false-fire no
+spare leak on ${\ge}2/3$; miss-wrong no invented freeze date and
+\arm{C} no worse than \arm{A}; honesty still refuses an absent token;
+both models pass before empty/invalid env maps to \mode{catalog}.
+
+\section{Experimental protocol}
+\label{sec:protocol}
+
+\paragraph{Layer 0.}
+Seven labeled transcripts bury a fact in filler, then probe residual
+(and, for hermetic arm~\arm{C}, archive-backed peek). Scoring is
+stdlib substring. Arm~\arm{A} is a scripted omission control, not a
+production summarizer. Default execution uses no API keys
+(\texttt{python -m catalog\_residual.bench}).
+
+\paragraph{Layer 1.}
+The same cases, plus holdouts, run through a real pilot on OpenRouter.
+Default is dry-run. Live requires explicit \texttt{--live} and
+\texttt{--driver}. Drivers:
+\texttt{openrouter:openai/gpt-5.6-luna} and
+\texttt{openrouter:openai/gpt-5.6-sol}. Repeats $n{=}3$, seed frozen
+in the receipt. Schema \texttt{compaction\_residual\_live/v2}.
+
+\paragraph{What we publish.}
+This repo publishes aggregated tables
+(\texttt{data/published\_tables.json}) and the lab protocol. Raw live
+receipts stay local: they contain residual text and final answers, not
+API keys, and they are large. Anyone with keys can regenerate them
+from the runner. We do not ask reviewers to trust a
+\texttt{winner} field we refused to write.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Layer 0 hermetic battery}
+\label{sec:l0}
+
+On the original seven-case fixture, catalog residual cost ($195$
+tokens) sat far below the uncompacted ceiling ($838$) and only modestly
+above the scripted four-heading control ($169$). Catalog missed the
+designed plain-fact nonce until fact harvest closed that hole at
+fixture level. Archive-backed peek recovered the designed miss.
+Arm~\arm{D} false-recalled the retired twin filename: the ceiling still
+contains it. This layer licensed a hybrid experiment. It did not
+license a factory flip. Arm~\arm{A} here is not a production
+summarizer.
+
+\subsection{Claim-grade complementarity}
+\label{sec:claim}
+
+An earlier Sol-only $10{\times}4{\times}3$ run (\$1.01) was saturated
+on end-task and stale-taxed on peek; \texttt{claim\_ready} was false.
+Luna replicated the complementarity at \$0.098. After hybrid gained a
+stems line, a focused $4{\times}3{\times}3$ confirmation on both
+models showed \arm{B} $24/24$ round-1 residual on the complementary
+slice versus \arm{A} $6/24$ (catalog-miss only) and \arm{C} $18/24$
+(misses catalog-miss). Peek stale on that slice was $0/12$.
+
+The claim-grade merge is $11$ cases $\times$ $4$ arms $\times$ $3$
+repeats $\times$ $2$ models $= 264$ ok rows (Luna \$0.109, Sol
+\$1.125, merge \$1.234). Honesty holdouts $24/24$ clean. Peek stale
+$0/24$. \texttt{evaluate\_live\_gates} on the merge:
+\texttt{claim\_ready=true}.
+
+\begin{table}[t]
+\centering
+\caption{Claim-grade fact-bearing \metric{residual\_recall\_round1}
+(excludes negative control). Hybrid+stems is the only compact residual
+that keeps both channels. Not a factory flip.}
+\label{tab:claim}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Arm & $n$ & round-1 recall & Misses \\
+\midrule
+\arm{A} summary & 60 & 42 & all 18 generic-policy cells \\
+\arm{B} hybrid+stems & 60 & 60 & none \\
+\arm{C} catalog & 60 & 54 & all 6 \texttt{catalog\_miss\_plain\_fact} \\
+\arm{D} off & 60 & 0 (no compact) & rank on raw residual $60/60$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Distinctive identifiers (\texttt{nonce\_write\_constraint}, handles,
+error tails) survive summary. Generic policy stems
+(\texttt{CONSTRAINT:}, \texttt{Decision:}, long-horizon copies) do
+not. Catalog keeps stems and drops nonce prose. That is the residual
+ranking. Production stayed \mode{summary} until the later
+default-worthy cut. We did not write a \texttt{winner} onto the
+receipt.
+
+\subsection{Vault: dump-and-query is complementary}
+\label{sec:vault-results}
+
+Science claim: catalog can miss plain prose; vault retrieve should
+still return it when the ask overlaps.
+
+\begin{table}[t]
+\centering
+\caption{Lexical vault isolation, peek hidden or peek-evicted, $n{=}3$.
+Not \texttt{claim\_ready}.}
+\label{tab:vault}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Cell & Vault on & Vault off \\
+\midrule
+Cutoff prose, Luna / Sol & $3/3$ / $3/3$ & $0/3$ refuse / $0/3$ refuse \\
+$85$k eviction, Luna / Sol & $3/3$, $0$ peek & $0/3$, peek miss \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The dump had the fact. The ask was not always a key. Before a selected
+story existed, narrative recap and no-overlap paraphrase were
+\arm{A} $3/3$ and \arm{C} $0/3$ on both models. Recap FTS keyed
+``earlier''/``decided'' and injected the tail. Paraphrase FTS keyed
+``invoices''/``freeze'' and injected nothing. Summary still won
+because compact-time selection wrote a readable story.
+
+A heuristic \texttt{miss\_plan} then made Luna catalog $3/3$ on those
+two lab cells by dumping the compact-time user extract into empty FTS.
+That helped a paraphrase that happened to sit in the plan and poisoned
+an unrelated invoice ask. Even summary-plus-vault contaminated
+(\arm{A} $0/3$ on the miss-wrong cell). \texttt{miss\_plan} died. Empty
+FTS is empty.
+
+\subsection{Default-worthy gate}
+\label{sec:default}
+
+Catalog cannot be factory default while it is only an index. The
+product cut: last-$N$ selected story on the catalog residual, user and
+assistant, skip residuals and acks, keep ``docs only'' when the line
+has distinctive content, no \texttt{miss\_plan}, tighter recap.
+
+\begin{table}[t]
+\centering
+\caption{Default-worthy end-task, $n{=}3$, peek hidden except the
+evicted-cutoff cell. Both models pass the pre-registered gate.
+\texttt{claim\_ready} stays false on this slice
+(\texttt{suite\_incomplete}). Costs: Luna \$0.082, Sol \$0.830.}
+\label{tab:default}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Cell & Luna \arm{A} & Luna \arm{C} & Sol \arm{A} & Sol \arm{C} \\
+\midrule
+narrative recap & $3/3$ & $3/3$ \texttt{recap\_plan} & $3/3$ & $3/3$ \\
+paraphrase no-overlap & $3/3$ & $3/3$ \texttt{empty} & $3/3$ & $3/3$ \\
+twin & $3/3$ & $3/3$ \texttt{fts} & $3/3$ & $3/3$ \\
+cutoff prose & $3/3$ & $3/3$ \texttt{fts} & $3/3$ & $3/3$ \\
+peek-evicted cutoff & $3/3$ & $3/3$ \texttt{fts} & $3/3$ & $3/3$ \\
+last-$N$ / late spare & $1/3^*$ & $3/3$ & $3/3$ & $3/3$ \\
+docs-only real plan & $3/3$ & $3/3$ & $3/3$ & $3/3$ \\
+assistant-only decision & $3/3$ & $3/3$ & $3/3$ & $3/3$ \\
+invoice ask / canary & $3/3$ & $3/3$ \texttt{empty} & $2/3^{**}$ & $3/3$ \\
+remind test runner & $3/3$ & $3/3$ & $3/3$ & $3/3$ \\
+chrome notes & $3/3$ & $3/3$ & $3/3$ & $3/3$ \\
+negative control & $3/3$ & $3/3$ & $3/3$ & $3/3$ \\
+unprefixed reversal & $0/3$ & $0/3$ & $0/3$ & $0/3$ \\
+stem-cap later decision & $3/3$ & $3/3$ & $3/3$ & $2/3^{***}$ \\
+\bottomrule
+\end{tabular}
+\caption*{\footnotesize $^*$Luna \arm{A} named \texttt{primary region}
+as replaced (oracle-harsh). $^{**}$Sol \arm{A} said ``wasn't
+specified''; the refusal list wants ``not specified.'' $^{***}$Sol
+\arm{C} said ``use SQLite, not Redis''; residual recall was $3/3$.}
+\end{table}
+
+Paraphrase \arm{C} is empty-vault: the selected story already carries
+``twenty-seven.'' Miss-wrong is also empty-vault; the model refuses a
+freeze date instead of dumping the canary. That is why
+\texttt{miss\_plan} could die.
+
+Unprefixed reversal is $0/3$ on both arms in this receipt. Last-$N$
+still kept conflicting obligations. That hole is not catalog-only.
+
+\subsection{Last-wins, then summarizer last-wins}
+\label{sec:lw-results}
+
+Topic last-wins on story, stems, and vault retrieve (insert order)
+plus ack hygiene closed catalog reversal. Luna and Sol catalog
+\arm{C} are $3/3$ on unprefixed reversal after that cut
+(\texttt{*\_last\_wins\_noreverse\_*.json}). Unprefixed-obligation
+without reversal stays $3/3$ on \arm{C}.
+
+The remaining hole was summary \arm{A}: the paid paragraph still saw
+``Reversed.'' and treated it as a rollback (Luna $0/3$, Sol $1/3$
+before the cut). Product: drop ack-only assistant lines from
+summarizer input; later decisions replace earlier ones in the system
+prompt; pin \texttt{\#\#\# Selected story} after a good LLM / hybrid /
+fallback so a lying paragraph cannot hide the later go-ahead.
+
+\begin{table}[t]
+\centering
+\caption{Summarizer last-wins, $n{=}3$. All compact rounds were real
+LLM summaries (\texttt{mode=llm}). Costs: Luna \$0.011, Sol \$0.094.
+Gate: \arm{A} reversal ${\ge}2/3$, \arm{C} still $3/3$, obligation
+unregressed. Residual recall $3/3$ on every cell. \arm{A} misses are
+lexical (\texttt{writable} / \texttt{approved write sink} /
+\texttt{previously the only sink}), not a rollback to don't-write.}
+\label{tab:sumlw}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Cell & Luna \arm{A} & Luna \arm{C} & Sol \arm{A} & Sol \arm{C} \\
+\midrule
+unprefixed reversal & $2/3$ & $3/3$ & $2/3$ & $3/3$ \\
+unprefixed obligation & $3/3$ & $3/3$ & $3/3$ & $3/3$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We did not loosen the oracle to force $3/3$. We did not restamp
+\texttt{claim\_ready}. We did not add these cells to
+\texttt{live\_cases()}.
+
+\section{Figures}
+\label{sec:figures}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  box/.style={draw, rounded corners=2pt, align=center, inner sep=6pt, minimum height=1.15cm},
+  arrow/.style={-{Latex}, thick}
+]
+\node[box, fill=black!4] (hist) {Session history $H$};
+\node[box, right=1.3cm of hist, fill=black!4] (comp) {Compact\\generation $g$};
+\node[box, above right=0.55cm and 1.4cm of comp, fill=red!8] (res) {Residual $R_g$\\catalog + story};
+\node[box, right=1.4cm of comp, fill=blue!6] (vault) {Vault $V_g$\\FTS5 + rowid};
+\node[box, below right=0.55cm and 1.4cm of comp, fill=orange!10] (peek) {Peek sidecar\\oldest+newest};
+\node[box, below=1.55cm of vault, fill=black!4] (ask) {Later ask $q$};
+\node[box, right=1.5cm of ask, fill=green!8] (inj) {Next prompt};
+\draw[arrow] (hist) -- (comp);
+\draw[arrow] (comp) -- (res);
+\draw[arrow] (comp) -- (vault);
+\draw[arrow] (comp) -- (peek);
+\draw[arrow] (res.south) |- (inj.west);
+\draw[arrow] (ask) -- (inj);
+\draw[arrow] (vault) -- (ask);
+\draw[arrow, dashed] (peek) -- (ask);
+\end{tikzpicture}
+\caption{Three planes after compact. The residual is always in the next
+prompt. Vault retrieve is lexical (or recap-routed). Peek is a dashed
+fallback and is hidden in the isolation cells. \texttt{miss\_plan} is
+intentionally absent.}
+\label{fig:planes}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[font=\small, x=1.15cm, y=0.55cm]
+\draw[->] (0,0) -- (8.4,0) node[right] {round-1 recall (fact-bearing)};
+\foreach \x/\lab in {0/0,2/15,4/30,6/45,8/60}
+  \draw (\x,0.12) -- (\x,-0.12) node[below] {\lab};
+\fill[red!55] (0,3.2) rectangle ({42*8/60},4.0);
+\node[left] at (0,3.6) {\arm{A}};
+\fill[orange!60] (0,2.0) rectangle ({60*8/60},2.8);
+\node[left] at (0,2.4) {\arm{B}};
+\fill[blue!45] (0,0.8) rectangle ({54*8/60},1.6);
+\node[left] at (0,1.2) {\arm{C}};
+\node[font=\footnotesize, right] at ({42*8/60},3.6) {$42/60$};
+\node[font=\footnotesize, right] at ({60*8/60},2.4) {$60/60$};
+\node[font=\footnotesize, right] at ({54*8/60},1.2) {$54/60$};
+\end{tikzpicture}
+\caption{Claim-grade complementarity (Table~\ref{tab:claim}). Hybrid
+wins the ranking. Catalog still misses designed nonce prose. This
+figure is not a default-flip argument.}
+\label{fig:bars}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  line/.style={draw, align=left, inner sep=5pt, text width=7.4cm},
+  x=1cm, y=0.85cm
+]
+\node[line, fill=red!10] (a) at (0,3.2)
+  {don't write to the live ledger; east replica is the \textbf{only} sink.};
+\node[line, fill=black!6] (ack) at (0,2.1)
+  {Assistant: \texttt{Reversed.} --- ack, not policy. Dropped from story
+  and from summarizer input.};
+\node[line, fill=green!12] (b) at (0,0.9)
+  {go ahead and write to the live ledger \textbf{now}; east replica is
+  \textbf{retired}.};
+\draw[-{Latex}, thick] (a.east) ++(0.15,0) -- ++(0.7,0) |- ([xshift=0.15cm]b.east);
+\node[font=\footnotesize, text width=3.2cm, align=left]
+  at (5.9,2.1) {$\mathrm{overlap}/{\min}\ge 0.6$\\after dropping $D$\\$\Rightarrow$ evict older};
+\end{tikzpicture}
+\caption{Topic last-wins. Polarity words in $D$ are stripped before
+overlap, so ``don't/only'' versus ``now/retired'' still collide on
+\{\texttt{write},\texttt{live},\texttt{ledger},\texttt{east},\texttt{replica},\texttt{sink}\}.
+The one-word ack never enters the comparison.}
+\label{fig:lastwins}
+\end{figure}
+
+\section{Interpretation}
+\label{sec:interp}
+
+Three statements survive the receipts.
+
+\begin{enumerate}[leftmargin=1.3em]
+\item \textbf{Neither channel alone is sufficient on the claim-grade
+  suite.} Summary drops generic policy. Catalog (before fact harvest
+  and story) drops nonce prose. Hybrid+stems is the residual that
+  keeps both \emph{as a ranking}. That is why hybrid exists as a
+  Settings opt-in.
+\item \textbf{Retrieve cannot substitute for selection.} Vault uniquely
+  recovers overlapping prose the peek sidecar has dropped. Recap and
+  paraphrase fail until compact writes a story. Dumping the plan into
+  empty FTS is contamination, not intelligence.
+\item \textbf{Catalog can be the factory residual once the story is in
+  the live window.} The default-worthy gate is that statement, on two
+  models, with honesty intact. Last-wins and ack hygiene are part of
+  the residual, not a later prompt trick. Summary remains available
+  for people who want a paid paragraph; it now pins the same story so
+  a rollback sentence cannot hide the later policy.
+\end{enumerate}
+
+Tweet-safe: peek cannot hold a long session; SQLite retrieve can, when
+the ask overlaps. Catalog can be the default because compact writes a
+selected story, not because FTS became a summarizer.
+
+Not tweet-safe: stop compacting, stop summarizing, universal win, ``we
+solved recap.''
+
+\section{Limitations}
+\label{sec:limits}
+
+\begin{itemize}[leftmargin=1.2em,itemsep=0.35em]
+\item $n{=}3$ on two OpenRouter models is a lab, not a field study.
+  Luna is cheap and leaky; Sol is dearer and still misses lexical
+  oracles.
+\item Substring oracles are brittle. Sol \arm{C} ``use SQLite, not
+  Redis'' failed a phrase check with residual recall $3/3$. We kept
+  the oracle.
+\item Experimental cells are not in \texttt{live\_cases()}.
+  Default-worthy and last-wins receipts have
+  \texttt{claim\_ready=false} by construction
+  (\texttt{suite\_incomplete}). That is intentional.
+\item Layer~0 arm~\arm{A} is a scripted omission control. Do not cite
+  it as ``summarizers fail.''
+\item The filler that taught the selector (``docs only'',
+  ``pad pad pad'') is lab-shaped. We tightened the filler rule after
+  it dropped a real plan that used those words. Adversarial English
+  remains open.
+\item Topic last-wins is noun overlap, not entailment. Two unrelated
+  sentences that share enough content nouns can evict the earlier
+  one. We have not bounded that failure.
+\item Vault is session-scoped BM25. It will not answer
+  ``what did we decide?'' from tokens that are not in the story or
+  the plan chunk. That is the point of the story.
+\item Costs are provider \texttt{usage.cost} sums on these receipts,
+  not a general pricing model.
+\item This paper packages work that already shipped in a product. It
+  is a public lab notebook, not an independent replication by a third
+  party.
+\end{itemize}
+
+\section{Reproduction}
+\label{sec:repro}
+
+Hermetic battery (no API keys), from a Marionette checkout that still
+exposes the product seams, with this lab on \texttt{PYTHONPATH}:
+
+\begin{verbatim}
+python -m catalog_residual.bench
+python -m catalog_residual.live          # dry-run
+python -m catalog_residual.live --live \
+  --driver openrouter:openai/gpt-5.6-luna \
+  --suite all --repeats 3
+\end{verbatim}
+
+Live arms are Table~\ref{tab:arms}. \texttt{--suite} is
+\texttt{core} (default), \texttt{holdout}, or \texttt{all}.
+\texttt{--case} overrides and is how experimental cells run.
+Published aggregates are \texttt{data/published\_tables.json}. Do not
+add a \texttt{winner} field. Do not put experimental cells into
+\texttt{live\_cases()} to force \texttt{claim\_ready}.
+
+Product tests for residual modes, vault unit behavior, and Settings
+stay in Marionette. This repo owns the protocol and the paper.
+
+\section{Conclusion}
+\label{sec:concl}
+
+We measured compaction residuals instead of arguing about them.
+Extractive handles plus a last-wins story are a credible factory
+default for a coding harness that already has a vault and an archive.
+A paid paragraph is still the better residual for some asks and is
+still one Settings click away. Hybrid is the ranking winner on the
+claim-grade suite and the honest opt-in when someone wants both
+channels in one residual.
+
+The work is small, local, and reviewable. If the oracles are wrong,
+say so. If last-wins is too crude, patch it. If another harness
+replicates the default-worthy gate with a different model pair, that
+is the contribution we actually want.
+
+\section*{Acknowledgments}
+
+Receipts were run against Marionette's own compact path, not a
+reimplementation. Puppetmaster is the orchestration kernel under that
+harness; this paper does not evaluate it. Errors are the author's.
+
+\begin{thebibliography}{9}
+
+\bibitem{palmer2026state}
+C.~Palmer.
+\newblock State, Not Tokens: Repository-Scale Agent Reasoning Is Bound by
+  State Architecture.
+\newblock 2026.
+\newblock \url{https://professorpalmer.github.io/durable-state-vs-context/}.
+
+\bibitem{memgpt}
+C.~Packer, S.~Wooders, K.~Lin, V.~Fang, S.~G.~Patil, I.~Stoica, and
+  J.~E.~Gonzalez.
+\newblock MemGPT: Towards LLMs as Operating Systems.
+\newblock arXiv:2310.08560, 2023.
+
+\bibitem{robertson2009}
+S.~Robertson and H.~Zaragoza.
+\newblock The Probabilistic Relevance Framework: BM25 and Beyond.
+\newblock \emph{Foundations and Trends in Information Retrieval},
+  3(4):333--389, 2009.
+
+\bibitem{marionette}
+C.~Palmer.
+\newblock Marionette v0.9.244.
+\newblock 2026.
+\newblock \url{https://github.com/professorpalmer/marionette}.
+
+\end{thebibliography}
+
+\appendix
+\section{Cost ledger (provider sums)}
+\label{app:cost}
+
+\begin{table}[h]
+\centering
+\caption{Provider \texttt{usage.cost} totals from the published
+aggregates. These are the receipts, not estimates.}
+\label{tab:costs}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Receipt & $n$ & USD \\
+\midrule
+suite-all Sol (hybrid without stems) & 120 & 1.006 \\
+suite-all Luna & 120 & 0.098 \\
+hybrid+stems Luna slice & 36 & 0.034 \\
+hybrid+stems Sol slice & 36 & 0.341 \\
+claim-grade Luna & 132 & 0.109 \\
+claim-grade Sol & 132 & 1.125 \\
+claim-grade merge & 264 & 1.234 \\
+default-worthy Luna & 96 & 0.082 \\
+default-worthy Sol & 96 & 0.830 \\
+summarizer last-wins Luna & 12 & 0.011 \\
+summarizer last-wins Sol & 12 & 0.094 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Gate predicates (informal)}
+\label{app:gates}
+
+Let $S$ be the set of ok rows in a receipt. Write $r_1(x)$, $e(x)$,
+$p(x)$, $s(x)$ for round-1 residual recall, end-task success, peek
+calls, and peek stale. Let $\mathcal{A},\mathcal{B},\mathcal{C}$ be
+the compact arms and $\mathrm{NC}$ the honesty holdouts.
+
+\begin{align}
+\mathrm{honesty\_fail}
+  &= \exists\, x\in\mathrm{NC}:\; x\text{ invents the absent token} \\
+\mathrm{stale\_tax\_fail}
+  &= \Bigl(\sum_{x\in\mathcal{C}} p(x) > 0\Bigr)
+     \land
+     \frac{\sum s(x)}{\sum p(x)} > 0.25 \\
+\mathrm{saturation\_fail}
+  &= \bigl(\bar e(\mathcal{A})\ge 0.95 \land \bar e(\mathcal{B})\ge 0.95\bigr)
+     \lor
+     \bigl(\bar r_1(\mathcal{A},\mathcal{B},\mathcal{C})\ge 0.95\bigr)
+\end{align}
+
+\texttt{claim\_ready} additionally requires two models, a complete
+\texttt{live\_cases()} factorial, residual text and final answer on
+every ok row, and no \texttt{winner} key. Experimental receipts fail
+the factorial on purpose.
+
+\end{document}

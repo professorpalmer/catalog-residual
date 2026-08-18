@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "catalog-residual"
+version = "0.1.0"
+description = "Lab protocol and paper for extractive compaction residuals (catalog, vault, last-wins)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Cary Palmer" }]
+
+[tool.setuptools.packages.find]
+where = ["lab"]
+
+[tool.pytest.ini_options]
+testpaths = ["lab/tests"]
+pythonpath = ["lab"]
