@@ -227,7 +227,7 @@ Figure~\ref{fig:planes} is that split.
 \draw[arrow] (comp.east) -- (vault.west);
 \draw[arrow] (comp.east) |- (res.west);
 \draw[arrow] (comp.east) |- (peek.west);
-\draw[arrow] (res.east) -- ++(0.7,0) |- (inj.north);
+\draw[arrow, line join=round] (res.east) -| (inj.north);
 \draw[arrow] (vault.west) -- ++(-0.4,0) |- (ask.west);
 \draw[arrow, dashed] (peek.south) -- (ask.north);
 \draw[arrow] (ask) -- (inj);
