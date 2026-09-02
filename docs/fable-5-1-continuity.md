@@ -76,20 +76,6 @@ The question is what remains usable from client-visible state.
 The observable cell is not a single-variable contrast with hidden-only.
 It uses a forced tool round plus visible text. The page states that.
 
-## Screenshots
-
-![Hero and confirmatory matrix](images/fable-hero.png)
-
-![Cost and request strip](images/fable-metrics.png)
-
-![Result cards](images/fable-result.png)
-
-![Causal trace](images/fable-causal-trace.png)
-
-![Trial ledger](images/fable-trials.png)
-
-![Claim boundary](images/fable-boundary.png)
-
 ## Claim boundary
 
 Supported: after bound thinking was removed, Catalog residual produced
