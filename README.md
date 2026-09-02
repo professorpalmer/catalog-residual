@@ -16,6 +16,10 @@ without claiming that summarization is obsolete.
 
 **Site.** [professorpalmer.github.io/catalog-residual](https://professorpalmer.github.io/catalog-residual/)
 
+**Fable 5.1 protocol note.**
+[`docs/fable-5-1-continuity.html`](docs/fable-5-1-continuity.html)
+tests what remains usable after a prefix rewrite invalidates bound thinking.
+
 **Paper.** [`paper/paper.pdf`](paper/paper.pdf) (same file as
 [`docs/paper.pdf`](docs/paper.pdf)).
 

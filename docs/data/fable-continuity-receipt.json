@@ -1,0 +1,3438 @@
+{
+  "bootstrap_max_tokens": 512,
+  "continuation_max_tokens": 4096,
+  "dry_run": false,
+  "evidence_kind": "anthropic_task_continuity_pilot",
+  "fable_protocol": false,
+  "failure": "",
+  "mode": "provider_continuity",
+  "models": [
+    "claude-fable-5-1"
+  ],
+  "n": 20,
+  "protocol": "catalog_residual_projection",
+  "provider_continuity_validated": false,
+  "provider_validated": false,
+  "real_network": true,
+  "repeats": 10,
+  "request_count": 98,
+  "rows": [
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": true,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 7551,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [],
+        "request_id_present": true,
+        "request_id_sha256": "7ba3bb87fb6d198e67c211737998f5a1a8470576ee1144b90f8bc25cdf207e6c",
+        "required_tool_use_present": false,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 96,
+          "output_tokens": 170
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 143,
+            "payload_sha256": "32042bdb59e8ecf82ac94a9c24422c47332aeb653e56d5c696b05b2f8704ced8",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 143,
+        "dropped_count": 1
+      },
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 7315,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "73bbc9a3d87fbb5c326a60461d89d42209f215d3ac839b0345c46f4b76e666ee",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 404,
+          "output_tokens": 236
+        }
+      },
+      "causal_ok": true,
+      "drop_block": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "drop_block",
+        "binding_mismatch": true,
+        "elapsed_ms": 8735,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "caa13e9df2f8720f9695241b1038944483ce805602c36da7c8c446c927e5d2d9",
+        "served_model": "claude-fable-5-1",
+        "status_class": "binding_mismatch",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 95,
+          "output_tokens": 149
+        }
+      },
+      "elapsed_ms_total": 37413,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 5998,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "3cb4352d3ad5deea8802652b4ce9927e0c64b2353317b6d5d48768f1107a54c4",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 77,
+          "output_tokens": 96
+        }
+      },
+      "observable_commitment_locations": [],
+      "planned_checkpoint": "ckpt-hid-0-2f9a57dd",
+      "projected_tail": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 7460,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "b949699369f88f5e19dd55dc457144afa232c24efb6c5d5e7dcc97cb9af98648",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 95,
+          "output_tokens": 133
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 0,
+      "request_count": 6,
+      "residual": {
+        "byte_length": 838,
+        "compacted": true,
+        "contains_commitment": false,
+        "digest": "96154f282de0c1a7af86bf459a2000ab3689ab4618e27a8a094a02754fd270f5"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "ok",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 354,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "8c080dabd0acf325c87057eebbe71e92691094f5ac089b266eae306cf6c7efe5",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 767,
+        "output_tokens": 784
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": true,
+        "commitment_in_bound_thinking": false,
+        "elapsed_ms": 9631,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [],
+        "request_id_present": true,
+        "request_id_sha256": "5e01449ed675cbd7411a827e7a61ddb3970f116e2cd3719017195895d5831379",
+        "required_tool_use_present": false,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 96,
+          "output_tokens": 408
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": false,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 533,
+            "payload_sha256": "9e9487c952d2347e73fbf285e089a526c9ebf6b0447811d8c2f2c6fe534b1a75",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 533,
+        "dropped_count": 1
+      },
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": null,
+      "causal_ok": false,
+      "drop_block": null,
+      "elapsed_ms_total": 9631,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "planted commitment missing from bound thinking",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": null,
+      "observable_commitment_locations": [],
+      "planned_checkpoint": "ckpt-hid-1-6e27a2cd",
+      "projected_tail": null,
+      "projection": {},
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 1,
+      "request_count": 1,
+      "residual": {
+        "byte_length": 0,
+        "compacted": false,
+        "contains_commitment": false,
+        "digest": ""
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "unvalidated",
+      "unprojected": null,
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 96,
+        "output_tokens": 408
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": true,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 7326,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [],
+        "request_id_present": true,
+        "request_id_sha256": "2f528cf3e66d685ecb77cb2f8c8d93ce6d106e8885978d8871a9bca427521ce6",
+        "required_tool_use_present": false,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 94,
+          "output_tokens": 163
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 215,
+            "payload_sha256": "a8ff347762ca32fb456e7ea99a62452c10ece5978bd5a8b9bf60578dd19e11bf",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 215,
+        "dropped_count": 1
+      },
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 7435,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "3032b1d3716ea7f50e6616385d13a2eb01a78c2c684e6d5ecb012d0d7db12878",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 404,
+          "output_tokens": 136
+        }
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "elapsed_ms_total": 28133,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 5527,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "ed1298fa646c4cfe24fa30b9209760691383efbe2a289c94c114044980a41413",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 77,
+          "output_tokens": 89
+        }
+      },
+      "observable_commitment_locations": [],
+      "planned_checkpoint": "ckpt-hid-2-58f4c579",
+      "projected_tail": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 7389,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "e1aa55d1ebcb13dfa93caa4559ffe52e38bee36af3bdd6107ae7904d473cd830",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 95,
+          "output_tokens": 136
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 2,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 838,
+        "compacted": true,
+        "contains_commitment": false,
+        "digest": "96154f282de0c1a7af86bf459a2000ab3689ab4618e27a8a094a02754fd270f5"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "ok",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 456,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "9bfdd376b84ae1a687ba8272830b3bfaa4b64ea961d1b8f0308a8453597df958",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 670,
+        "output_tokens": 524
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": true,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 6629,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [],
+        "request_id_present": true,
+        "request_id_sha256": "0b008ca1556261fb40aa01ce4e1592eefd2632a4fad6faa23de5a3567dd04420",
+        "required_tool_use_present": false,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 96,
+          "output_tokens": 187
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 191,
+            "payload_sha256": "0444212f194a382b76ebfeaf831a9ce7a064f31a1a7102f4f9403c6e9c8cc9a7",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 191,
+        "dropped_count": 1
+      },
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 7654,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "1246d579fff21c91ddef0bbf7f9a848273bb179387f7858f7a0c4677807300ba",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 404,
+          "output_tokens": 228
+        }
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "elapsed_ms_total": 28349,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 6141,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "abdded55c2356e496bb51d11a3df4077dfac9ba5916dd4461e867494ce08c55c",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 77,
+          "output_tokens": 78
+        }
+      },
+      "observable_commitment_locations": [],
+      "planned_checkpoint": "ckpt-hid-3-a1c7bd41",
+      "projected_tail": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 7511,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "2748683c9c9bd7e528a6fbc6d905d6610327eb0349f81d7f863e4cee87ecceb6",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 95,
+          "output_tokens": 74
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 3,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 838,
+        "compacted": true,
+        "contains_commitment": false,
+        "digest": "96154f282de0c1a7af86bf459a2000ab3689ab4618e27a8a094a02754fd270f5"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "ok",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 414,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "a3cbdeb72046950ea44052614b5e24e158e18972e6fa643f9ca4f86c0443dfe4",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 672,
+        "output_tokens": 567
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": true,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 7236,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [],
+        "request_id_present": true,
+        "request_id_sha256": "20adc2f49e44f5fc162b2913036068cdd0d38d26cb182d59c6e57fa7bf997bf7",
+        "required_tool_use_present": false,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 94,
+          "output_tokens": 164
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 182,
+            "payload_sha256": "028e5af5bc799ce77ac8cdb44b80ea2387dfe697da917e31c36a91dd4028e3bd",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 182,
+        "dropped_count": 1
+      },
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 6364,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "8b02920d2f07df419dfb101429321e288fcc32550a5ef373c5f8631735d83166",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 404,
+          "output_tokens": 210
+        }
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "elapsed_ms_total": 25553,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 6089,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "7dd65e8ae3e2a80fbe1c87b0a84bd67ec3d8f1f2a88390aa12b59ebe75a9c061",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 77,
+          "output_tokens": 100
+        }
+      },
+      "observable_commitment_locations": [],
+      "planned_checkpoint": "ckpt-hid-4-58cd5482",
+      "projected_tail": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 5454,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "d3ac78a68c8aa0d125652352da021429aede9885bbc35271729e4f25381b8b33",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 95,
+          "output_tokens": 101
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 4,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 838,
+        "compacted": true,
+        "contains_commitment": false,
+        "digest": "96154f282de0c1a7af86bf459a2000ab3689ab4618e27a8a094a02754fd270f5"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "ok",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 410,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "f2efb441be1f92fa28115e1c7670faaa1d295c1540e71a6bf30180e05e9c6ccc",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 670,
+        "output_tokens": 575
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": true,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 8503,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [],
+        "request_id_present": true,
+        "request_id_sha256": "9d584c3b16b4c49efb362953461afc71b00bd3dc1dd38631c793d6ac29fe6bf0",
+        "required_tool_use_present": false,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 95,
+          "output_tokens": 158
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 125,
+            "payload_sha256": "dab01496a946073817260df89389163059c2f5cfb211950259f5142cafe7a17d",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 125,
+        "dropped_count": 1
+      },
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 5269,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "7a2b540599acafffd3f25c6f13a4d9085c97e0413dcee553cb429804d2794310",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "refusal",
+        "task_success": false,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 404,
+          "output_tokens": 7
+        }
+      },
+      "causal_ok": false,
+      "drop_block": null,
+      "elapsed_ms_total": 26231,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "causal chain incomplete",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 4906,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "62a89c036aff31fbb2995fbcc20e8dc93bd9ee75e55faab5a5d8714da402eb58",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 77,
+          "output_tokens": 102
+        }
+      },
+      "observable_commitment_locations": [],
+      "planned_checkpoint": "ckpt-hid-5-556ab7e3",
+      "projected_tail": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 7176,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "d4332e3905f1350a3f1ca9300a72a75a90ae2673256521099641e31cc25a7aa6",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 95,
+          "output_tokens": 159
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 5,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 838,
+        "compacted": true,
+        "contains_commitment": false,
+        "digest": "96154f282de0c1a7af86bf459a2000ab3689ab4618e27a8a094a02754fd270f5"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "unvalidated",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 377,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "6eaac7f8cafcb64678e6591439d24ab0e0e09a39edf23ecb9dd18e6c53131140",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 671,
+        "output_tokens": 426
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": true,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 7411,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [],
+        "request_id_present": true,
+        "request_id_sha256": "2be4abb898ef94efdca1b5dd8b58bf1bfb3d3e168fe763d8b0ae1bfa48b7b8d3",
+        "required_tool_use_present": false,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 95,
+          "output_tokens": 165
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 171,
+            "payload_sha256": "a9452ed90bad84a1c391ed1cc467ed168b364f26ef640eb28c414e06fd59840b",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 171,
+        "dropped_count": 1
+      },
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 7946,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "cac943325c279f1e926a0fc3b26e5b1ea728b2a043b92c4d5e940a25b57d665a",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 404,
+          "output_tokens": 295
+        }
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "elapsed_ms_total": 30678,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 5913,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "b0d1f59b9600c03d76234b6face8c213d5acaa24ff3a55ccbcdca23845787e3e",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 77,
+          "output_tokens": 84
+        }
+      },
+      "observable_commitment_locations": [],
+      "planned_checkpoint": "ckpt-hid-6-cbf6b818",
+      "projected_tail": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 9042,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "e000835becada70fc790dfbefd891250e2ce203e9f4d8b44864c167509e7af2e",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 95,
+          "output_tokens": 129
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 6,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 838,
+        "compacted": true,
+        "contains_commitment": false,
+        "digest": "96154f282de0c1a7af86bf459a2000ab3689ab4618e27a8a094a02754fd270f5"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "ok",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 366,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "7c0ca77a62195bd53fb5e9b75a6d9fe5c6665418b1ffa9e6e6f81c287f932359",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 671,
+        "output_tokens": 673
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": true,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 7522,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [],
+        "request_id_present": true,
+        "request_id_sha256": "1a9cb746e7e94e3a9d4f2120937ed15554d5391063e0335a5159d0ebef661d59",
+        "required_tool_use_present": false,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 95,
+          "output_tokens": 157
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 219,
+            "payload_sha256": "7455ce46723c32bade9d9cdbb314d49fca03f8c15ebfe563b28ef43c6f4f2a5a",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 219,
+        "dropped_count": 1
+      },
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 7424,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "f031a844678ec62652de5ba1fb8ac9ef1f66935c2e025a18ad0d8b7e6f0d261b",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 404,
+          "output_tokens": 209
+        }
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "elapsed_ms_total": 27716,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 5937,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "3743207f9a701d5649f8cbb4f570af6e47601dab72b1f751dfd728e39fdb4192",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 77,
+          "output_tokens": 85
+        }
+      },
+      "observable_commitment_locations": [],
+      "planned_checkpoint": "ckpt-hid-7-e22be7cc",
+      "projected_tail": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 6458,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "9a85a0fae3cb9b052da5e2caee290c31436e2ce687c322f689eca94414053c62",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 95,
+          "output_tokens": 74
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 7,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 838,
+        "compacted": true,
+        "contains_commitment": false,
+        "digest": "96154f282de0c1a7af86bf459a2000ab3689ab4618e27a8a094a02754fd270f5"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "ok",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 375,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "2150882ea853915559e56a176b00a93e6931364080693ab072e4d3e43e6d1259",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 671,
+        "output_tokens": 525
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": true,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 6507,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [],
+        "request_id_present": true,
+        "request_id_sha256": "03c73c5c828c80e715efe28df25641a9c301add88fb5e90b050fb08315ee613b",
+        "required_tool_use_present": false,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 95,
+          "output_tokens": 166
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 244,
+            "payload_sha256": "893c7364a407ab1085c7129a877a7dec552edd6bce3c871d493b93c01fae73a4",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 244,
+        "dropped_count": 1
+      },
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 8059,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "731254c8d02393a6868c373b1de02631812e36850aeab0ee4251c165a8af1fe4",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 404,
+          "output_tokens": 191
+        }
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "elapsed_ms_total": 27833,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 5664,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "fa2ca1eaa14a74ca4caa34410925d708460a670b48cb9bc19b3b0c79909a42f4",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 77,
+          "output_tokens": 116
+        }
+      },
+      "observable_commitment_locations": [],
+      "planned_checkpoint": "ckpt-hid-8-faeb10b9",
+      "projected_tail": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 7133,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "c74ff78ab5f124c9214803dd2dfd9ed4a154a607827a668afcb61b53078b8c88",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 95,
+          "output_tokens": 148
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 8,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 838,
+        "compacted": true,
+        "contains_commitment": false,
+        "digest": "96154f282de0c1a7af86bf459a2000ab3689ab4618e27a8a094a02754fd270f5"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "ok",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 470,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "0ce3fd7bfe6b76191564ea585a31084eeab4b4abedcc274da6560a04ade74c88",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 671,
+        "output_tokens": 621
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": true,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 7734,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [],
+        "request_id_present": true,
+        "request_id_sha256": "d2372d963190b918ba6297ded15de71a3f5c1d827965857060de46b932a05904",
+        "required_tool_use_present": false,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 95,
+          "output_tokens": 152
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 182,
+            "payload_sha256": "f305f43d2a773fdbbfc818f2092676f60018687c83fa9b3ab883106dd9974d3c",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 182,
+        "dropped_count": 1
+      },
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 8513,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "7eb303439ab1484d432f464fb3dc269f4d0e0805a5a794f97cdc3b0b274df72b",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 404,
+          "output_tokens": 313
+        }
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "elapsed_ms_total": 30283,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 6085,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "c6366d24c7b665f14d67a91acd8df915ad0e3481ee09fd31dbe90d7a3ac3b147",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 77,
+          "output_tokens": 73
+        }
+      },
+      "observable_commitment_locations": [],
+      "planned_checkpoint": "ckpt-hid-9-a1934b2a",
+      "projected_tail": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 6721,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "e15d87fb4a87a07bbf217d9dfd67c67ef987ca497344cbb1aea92181cc474c10",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 95,
+          "output_tokens": 128
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 9,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 838,
+        "compacted": true,
+        "contains_commitment": false,
+        "digest": "96154f282de0c1a7af86bf459a2000ab3689ab4618e27a8a094a02754fd270f5"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "ok",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 1230,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "137ae836ac57130442dc5a90a38d37c5513ae590b9bb9eb179f8219bc759e212",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 671,
+        "output_tokens": 666
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": false,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 6532,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [
+          "text",
+          "tool_use.input"
+        ],
+        "request_id_present": true,
+        "request_id_sha256": "6373aab555eb4ae905394269d17abda740572c3b75a29ace133b90399589b208",
+        "required_tool_use_present": true,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "tool_use",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 480,
+          "output_tokens": 264
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 137,
+            "payload_sha256": "b62551c0f22fdc8414d1034bb93341ac197a0c38c2c4f4bc9acd809dd10a7f87",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 137,
+        "dropped_count": 1
+      },
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "ckpt-obs-0-a018887d",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 7221,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "f389f8a496041c1e1e5a8662f1555b5f982036e7a8ceabb7f38229c9636e4f39",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 524,
+          "output_tokens": 197
+        }
+      },
+      "causal_ok": false,
+      "drop_block": {
+        "answer_excerpt": "ckpt-obs-0-a018887d",
+        "arm": "drop_block",
+        "binding_mismatch": true,
+        "elapsed_ms": 6679,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "cf87fc1488fe1d9b33bab3a0b04453dfb6b866a4f342d5b15e712c4972956987",
+        "served_model": "claude-fable-5-1",
+        "status_class": "binding_mismatch",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 643,
+          "output_tokens": 125
+        }
+      },
+      "elapsed_ms_total": 27406,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "causal chain incomplete",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 5015,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "62619a1c86f67d51ac9574dc2a040a5c5a0a867e3fea51c039abe35099d7815f",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 78,
+          "output_tokens": 73
+        }
+      },
+      "observable_commitment_locations": [
+        "text",
+        "tool_use.input"
+      ],
+      "planned_checkpoint": "ckpt-obs-0-a018887d",
+      "projected_tail": {
+        "answer_excerpt": "",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 1591,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "cbf700481f6271423388c9578b9953fee8de057d63d341dec6998a6e18d68046",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "refusal",
+        "task_success": false,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 300,
+          "output_tokens": 0
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 0,
+      "request_count": 6,
+      "residual": {
+        "byte_length": 1054,
+        "compacted": true,
+        "contains_commitment": true,
+        "digest": "6018a97df34f756cc5389cb1e96ddfc21118f8cca6bb32f332e1d090ff18f1d9"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "unvalidated",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 368,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "197f5274ffc23f17dc49a28e3f76b23ed7e34eed619b48fda46224595f4899a0",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 2025,
+        "output_tokens": 659
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": false,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 7592,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [
+          "text",
+          "tool_use.input"
+        ],
+        "request_id_present": true,
+        "request_id_sha256": "f4b3c023b441a186c7b72e4f00f71930f7119450a4833e25e8b2b8cadcf7605e",
+        "required_tool_use_present": true,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "tool_use",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 487,
+          "output_tokens": 269
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 162,
+            "payload_sha256": "afc5b74b680754e9ce5439154933b8a0f3e630f91317e02b08ac66065eeab07b",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 162,
+        "dropped_count": 1
+      },
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "ckpt-obs-1-bbc5fe77",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 6994,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "1f237e66738b614868757cd71bac8217610d74f26d0a79013518b31880e4c2eb",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 536,
+          "output_tokens": 225
+        }
+      },
+      "causal_ok": false,
+      "drop_block": null,
+      "elapsed_ms_total": 22524,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "causal chain incomplete",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 5914,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "5f3219d083af908a3a9be1d96ba3c96ddfc2fed75e7fb154dd92c593bde64d9f",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 78,
+          "output_tokens": 74
+        }
+      },
+      "observable_commitment_locations": [
+        "text",
+        "tool_use.input"
+      ],
+      "planned_checkpoint": "ckpt-obs-1-bbc5fe77",
+      "projected_tail": {
+        "answer_excerpt": "",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 1570,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "2ae4446ac7f5aa784d7a5d6d30da2b128471c80f738c7a684d86aee690758e56",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "refusal",
+        "task_success": false,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 309,
+          "output_tokens": 0
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 1,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 1054,
+        "compacted": true,
+        "contains_commitment": true,
+        "digest": "eec063e3bfc55f3319cb717fe4b9565602cf3b88859af730d3847e46fbf68bb7"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "unvalidated",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 454,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "e07ea28e7e62a3d09ba80404e1a6c4561aaf8ed6171a48b0db92ab0af6e383a4",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1410,
+        "output_tokens": 568
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": false,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 6441,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [
+          "text",
+          "tool_use.input"
+        ],
+        "request_id_present": true,
+        "request_id_sha256": "241038d878282f351696efc7d19d82e7955967f0bafb27f69a4c1207c0ef04a8",
+        "required_tool_use_present": true,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "tool_use",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 481,
+          "output_tokens": 262
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 152,
+            "payload_sha256": "8ade73451e3eee2bb5e4b5162f30f54bbe06d8184281c7b71e8806118e187f26",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 152,
+        "dropped_count": 1
+      },
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 1905,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "a8bac05559769ddc1dcb63a50579b1811fe277900aadc2ba060eb818868087e0",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "refusal",
+        "task_success": false,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 576,
+          "output_tokens": 0
+        }
+      },
+      "causal_ok": false,
+      "drop_block": null,
+      "elapsed_ms_total": 21548,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "causal chain incomplete",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 6172,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "4c7d1649fada30a6452c871669cbcc53cd52b8fa519f89b41fcc268c66099909",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 78,
+          "output_tokens": 116
+        }
+      },
+      "observable_commitment_locations": [
+        "text",
+        "tool_use.input"
+      ],
+      "planned_checkpoint": "ckpt-obs-2-2e287736",
+      "projected_tail": {
+        "answer_excerpt": "ckpt-obs-2-2e287736",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 6612,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "f22e75a48b06b32c201e7e50a053005dbd1632b6f62cdc51993e95d7ad36ae93",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 246,
+          "output_tokens": 116
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 2,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 1059,
+        "compacted": true,
+        "contains_commitment": true,
+        "digest": "6856dbd46d0bba5a9ab65f0f15c8ac9235f9aac97a770e8433496c235f8c89df"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "unvalidated",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 418,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "defa1afbbc9ba4b4ca26f06cfde42c3311675cae32989f74133517be74119c96",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1381,
+        "output_tokens": 494
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": false,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 6124,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [
+          "text",
+          "tool_use.input"
+        ],
+        "request_id_present": true,
+        "request_id_sha256": "254c2ef7a0a491635ac504d5415bdc4c6d41999edf9b8a2e59e8c307087cc6c0",
+        "required_tool_use_present": true,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "tool_use",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 483,
+          "output_tokens": 261
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 150,
+            "payload_sha256": "17be7cf0e623a2adc220bfe3d68f7f8874b7d100b027ea6efd570652fa86c3e9",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 150,
+        "dropped_count": 1
+      },
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "ckpt-obs-3-e0d95303",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 11949,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "4acc38708e39e3e9262fe413c80d35ac278bddf91df9ba3e1a62f063e5b8bded",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 528,
+          "output_tokens": 602
+        }
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "elapsed_ms_total": 32417,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 6194,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "1d0ccb5658af9ca682272c52884f45cf8d6fdb6ee2db120d0b46a81b69b26650",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 78,
+          "output_tokens": 70
+        }
+      },
+      "observable_commitment_locations": [
+        "text",
+        "tool_use.input"
+      ],
+      "planned_checkpoint": "ckpt-obs-3-e0d95303",
+      "projected_tail": {
+        "answer_excerpt": "ckpt-obs-3-e0d95303",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 7785,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "cb211fb4ea39ff2e2b59cce81510a6d00f9cefb3e5c16679b71c01cd0079045f",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 242,
+          "output_tokens": 196
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 3,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 1054,
+        "compacted": true,
+        "contains_commitment": true,
+        "digest": "ec3f464c14b62dd8b17057f1ae6164cff83eb0e33e0121d14feda8138c5bb180"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "ok",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 365,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "3b7771724b046b6df6df0b9201ad56159ba67cd0df1b2c9eb210a5b26a11b88b",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1331,
+        "output_tokens": 1129
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": false,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 5731,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [
+          "text",
+          "tool_use.input"
+        ],
+        "request_id_present": true,
+        "request_id_sha256": "ece1f9f9195b5d5e24344f9f2ae2bb500c59b186676695ae25eb4c3d721c14f7",
+        "required_tool_use_present": true,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "tool_use",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 482,
+          "output_tokens": 233
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 141,
+            "payload_sha256": "395a872f28e67a69592bb147b92ce8058560ef057358e17429e3246e5cdf940e",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 141,
+        "dropped_count": 1
+      },
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "ckpt-obs-4-585e11ad",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 8160,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "357c9d770447eda7f7dd885739289739717f4a366d074d38430c6ac47d72a80a",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 528,
+          "output_tokens": 354
+        }
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "elapsed_ms_total": 26597,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 6921,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "747c5d7e45b12d93a040ccd9e733d85c8c8fc71eea7e35adb597eeef8be0cd1d",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 78,
+          "output_tokens": 106
+        }
+      },
+      "observable_commitment_locations": [
+        "text",
+        "tool_use.input"
+      ],
+      "planned_checkpoint": "ckpt-obs-4-585e11ad",
+      "projected_tail": {
+        "answer_excerpt": "ckpt-obs-4-585e11ad",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 5414,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "669eb03c99031e3b5fe75039c8157316e7c953ae1992d8fc71e378d44a1675ac",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 242,
+          "output_tokens": 107
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 4,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 1054,
+        "compacted": true,
+        "contains_commitment": true,
+        "digest": "5763c881ee7d7d5821dfd8ce7ebcca166223f3f216ff17db63dda61759b1e9a7"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "ok",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 371,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "95e9937717b5d62b883bae66e7f78014a36014ee160eef1cdd4be5dceea16605",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1330,
+        "output_tokens": 800
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": false,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 7309,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [
+          "text",
+          "tool_use.input"
+        ],
+        "request_id_present": true,
+        "request_id_sha256": "b66adc401632f60780fe18394edcbd1d2568cba52d4e47fa8bf04f1adbea92db",
+        "required_tool_use_present": true,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "tool_use",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 483,
+          "output_tokens": 275
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 134,
+            "payload_sha256": "2ec64a3123082fdf1f71ce0bce1fb946b5ccd94ecfe4053520003e916fc9451e",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 134,
+        "dropped_count": 1
+      },
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "ckpt-obs-5-16f36db3",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 7111,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "eecee7e95d5fcf979a981a43944464b8facd920d28337fbcb17405be0d348346",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 536,
+          "output_tokens": 158
+        }
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "elapsed_ms_total": 27576,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 5441,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "c4ead10baea1f3a690b5560d641c98630cf59664eeef0cbd266e659542b98898",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 78,
+          "output_tokens": 70
+        }
+      },
+      "observable_commitment_locations": [
+        "text",
+        "tool_use.input"
+      ],
+      "planned_checkpoint": "ckpt-obs-5-16f36db3",
+      "projected_tail": {
+        "answer_excerpt": "ckpt-obs-5-16f36db3",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 7286,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "c93eca622762da5c1ad4e07e9c2f8e196bdf960d026b741543ba7b11103a3b39",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 250,
+          "output_tokens": 160
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 5,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 1053,
+        "compacted": true,
+        "contains_commitment": true,
+        "digest": "7595bd1032a1903988ef8e914c4ca6b4245d9c580e91b737d89a5ddc45d99684"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "ok",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 429,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "b98c06897714d12a92a846f1e2239d2abf19f9441a48f90c015ca1c19164761c",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1347,
+        "output_tokens": 663
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": false,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 6117,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [
+          "text",
+          "tool_use.input"
+        ],
+        "request_id_present": true,
+        "request_id_sha256": "2271597c42f86d95b5de3cd19c187126d93a83b518bafa702c5c332b0a7ba1f5",
+        "required_tool_use_present": true,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "tool_use",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 483,
+          "output_tokens": 242
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 151,
+            "payload_sha256": "82229e80cc52016427171f2dd2ffe6d69ea0acd80f80d63b2a27242a7a6527bd",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 151,
+        "dropped_count": 1
+      },
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "ckpt-obs-6-6d684e55",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 7627,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "00be0166e57a00ba163c8cd128645a0a03347748f6c0cbfa272600eff82fdbc8",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 528,
+          "output_tokens": 212
+        }
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "elapsed_ms_total": 28941,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 4984,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "1bf3dd68a6f468c682044c30f29dff929e35fb0f37074bb1139b44ecf549215b",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 78,
+          "output_tokens": 71
+        }
+      },
+      "observable_commitment_locations": [
+        "text",
+        "tool_use.input"
+      ],
+      "planned_checkpoint": "ckpt-obs-6-6d684e55",
+      "projected_tail": {
+        "answer_excerpt": "ckpt-obs-6-6d684e55",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 9806,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "b51dc91291b67090d05730164fdff187eb7916566861af8032155d0c12a6205c",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 242,
+          "output_tokens": 482
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 6,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 1054,
+        "compacted": true,
+        "contains_commitment": true,
+        "digest": "fb076d7beb5b127cc87a832029fc963192c87c1d4a0d103d533b6c04e0b5f6a1"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "ok",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 407,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "52040312bf11c41ce500a34091ecfb4474099707292b827fc5af193d22dc5c20",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1331,
+        "output_tokens": 1007
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": false,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 6561,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [
+          "text",
+          "tool_use.input"
+        ],
+        "request_id_present": true,
+        "request_id_sha256": "37c3980d72e270e5f0592d30ec6164fbf75b459caae8b79c904598a7bf12976b",
+        "required_tool_use_present": true,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "tool_use",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 482,
+          "output_tokens": 244
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 141,
+            "payload_sha256": "9a96dfc1f7d7c34ceab9890813344fa33d7541cb4fede4cdf5a8de4ca114ea78",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 141,
+        "dropped_count": 1
+      },
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "ckpt-obs-7-90f567ec",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 8831,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "f3eebf6c087ace1ec582c35f370864ec486195e07c998fc82477a782f35815e2",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 528,
+          "output_tokens": 391
+        }
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "elapsed_ms_total": 29134,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 5133,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "2b6d01dce2ee6c0a0a9a3b49c192223cebbc30f51f3953870b1df76fdae0d74d",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 78,
+          "output_tokens": 121
+        }
+      },
+      "observable_commitment_locations": [
+        "text",
+        "tool_use.input"
+      ],
+      "planned_checkpoint": "ckpt-obs-7-90f567ec",
+      "projected_tail": {
+        "answer_excerpt": "ckpt-obs-7-90f567ec",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 8234,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "853bdd6306486e6e20af035e71c37be1d0553ce924cc7af861faf1de98bba7f9",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 242,
+          "output_tokens": 259
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 7,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 1054,
+        "compacted": true,
+        "contains_commitment": true,
+        "digest": "6d5193c1fcc14195382a2ad74f02077e983638e3eaabb10b265c0e43086f2ea6"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "ok",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 375,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "f84c6fc642fb6f56c8352c8117a96331e9c02658788637d70254e6539bea7340",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1330,
+        "output_tokens": 1015
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": false,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 8193,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [
+          "text",
+          "tool_use.input"
+        ],
+        "request_id_present": true,
+        "request_id_sha256": "731c024fd2a3e6f379390a8642ca6ee90e4431b708752edae04ed3986c4033dd",
+        "required_tool_use_present": true,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "tool_use",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 486,
+          "output_tokens": 243
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 144,
+            "payload_sha256": "3343806ead3e30390948067a31acdfda799fec07021412725fc16e210b722f99",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 144,
+        "dropped_count": 1
+      },
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "ckpt-obs-8-16dc8f1c",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 8450,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "18a601dfb8f48abc1d4a103f4f7039e96120227bb60907c4c356f5e93dcfa992",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 535,
+          "output_tokens": 289
+        }
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "elapsed_ms_total": 30336,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 5943,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "5ca1e575178520cb31e8f70309e1bdd5a65f224a2036642307d4631029c152e3",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 78,
+          "output_tokens": 95
+        }
+      },
+      "observable_commitment_locations": [
+        "text",
+        "tool_use.input"
+      ],
+      "planned_checkpoint": "ckpt-obs-8-16dc8f1c",
+      "projected_tail": {
+        "answer_excerpt": "ckpt-obs-8-16dc8f1c",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 7357,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "6049fecf2ea2df31714b359383e8f421d0430d1181a400ecc6714b8ef38ff67f",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 247,
+          "output_tokens": 233
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 8,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 1050,
+        "compacted": true,
+        "contains_commitment": true,
+        "digest": "0f06165ff40aa62941f1ae486ea69baacb8de0b8a35923c4fa12191d28e681ca"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "ok",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 393,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "95ee05ea1885b623c5e82019e5a8ec586eb79395b3c9a3cf986652b7f5f1f069",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1346,
+        "output_tokens": 860
+      }
+    },
+    {
+      "bootstrap": {
+        "commitment_absent_from_observable": false,
+        "commitment_in_bound_thinking": true,
+        "elapsed_ms": 6775,
+        "has_signed_bound_block": true,
+        "http_completed": true,
+        "http_status": 200,
+        "model_match": true,
+        "observable_commitment_locations": [
+          "text",
+          "tool_use.input"
+        ],
+        "request_id_present": true,
+        "request_id_sha256": "9951f1eac67c7bb086e55b0f22ece18a5e955d251dfe76fd461b20e1045f00b1",
+        "required_tool_use_present": true,
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "tool_use",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 486,
+          "output_tokens": 252
+        }
+      },
+      "bound_state": {
+        "authentic_signed": true,
+        "commitment_in_bound": true,
+        "dropped_blocks": [
+          {
+            "payload_bytes": 137,
+            "payload_sha256": "b5d58ef1578aa858ee27f07f5d7d0bd699ec8bd469133a6f4bea5b86ce7afabe",
+            "type": "thinking"
+          }
+        ],
+        "dropped_bytes": 137,
+        "dropped_count": 1
+      },
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "answer_excerpt": "ckpt-obs-9-b39f6a7a",
+        "arm": "catalog_residual",
+        "binding_mismatch": false,
+        "elapsed_ms": 8579,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "a71f202735a431474e2daf601dd819a54534b7cc37c2a3107d148c919247d756",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 536,
+          "output_tokens": 320
+        }
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "elapsed_ms_total": 27101,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "fable_protocol": false,
+      "failure": "",
+      "model_requested": "claude-fable-5-1",
+      "model_served": "claude-fable-5-1",
+      "no_state": {
+        "answer_excerpt": "UNKNOWN",
+        "arm": "no_state",
+        "binding_mismatch": false,
+        "elapsed_ms": 5903,
+        "exact_unknown": true,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "12db10db42e96f5b4bdcc02ec300e5b9fb5bd8ed21531108586c36864513acd8",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 78,
+          "output_tokens": 86
+        }
+      },
+      "observable_commitment_locations": [
+        "text",
+        "tool_use.input"
+      ],
+      "planned_checkpoint": "ckpt-obs-9-b39f6a7a",
+      "projected_tail": {
+        "answer_excerpt": "ckpt-obs-9-b39f6a7a",
+        "arm": "projected_tail",
+        "binding_mismatch": false,
+        "elapsed_ms": 5464,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 200,
+        "invented_concrete_value": false,
+        "model_match": true,
+        "recovered_checkpoint": true,
+        "request_id_present": true,
+        "request_id_sha256": "4076b834aec55c5db465d4b862b67bd047c31295c85cbb0552d2b801dbedeaf7",
+        "served_model": "claude-fable-5-1",
+        "status_class": "ok",
+        "stop_reason": "end_turn",
+        "task_success": true,
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 248,
+          "output_tokens": 120
+        }
+      },
+      "projection": {
+        "blocks_dropped": 1,
+        "bound_thinking_after_prefix": false,
+        "dropped_types": {
+          "thinking": 1
+        },
+        "projected_request_valid": true,
+        "projection_approved": true,
+        "projection_complete": true,
+        "tool_round_resolved": true,
+        "tool_round_valid": true,
+        "wire_protocol_valid": true
+      },
+      "protocol_role": "prefix_binding_validation",
+      "provider_validated": false,
+      "repeat_index": 9,
+      "request_count": 5,
+      "residual": {
+        "byte_length": 1054,
+        "compacted": true,
+        "contains_commitment": true,
+        "digest": "17d952b3fd466c7a32ed479fa62e809b7d23f3cd1f469c566e2717121dcb5538"
+      },
+      "schema": "catalog_residual_projection/v1",
+      "status": "ok",
+      "unprojected": {
+        "answer_excerpt": "",
+        "arm": "unprojected",
+        "binding_mismatch": true,
+        "elapsed_ms": 380,
+        "exact_unknown": false,
+        "honesty_clean": true,
+        "http_status": 400,
+        "invented_concrete_value": false,
+        "model_match": false,
+        "recovered_checkpoint": false,
+        "request_id_present": true,
+        "request_id_sha256": "40e8d90fbc6a139b2da3b63bf14ba57260aae8c8898967aa8ea053adb8c61828",
+        "served_model": "",
+        "status_class": "binding_mismatch",
+        "stop_reason": "",
+        "task_success": true,
+        "usage": {}
+      },
+      "usage_total": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1348,
+        "output_tokens": 778
+      }
+    }
+  ],
+  "schema": "catalog_residual_projection/v1",
+  "status": "unvalidated",
+  "transport": "stdlib",
+  "usage_total": {
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "input_tokens": 20409,
+    "output_tokens": 13742
+  },
+  "workspace_routing": true
+}

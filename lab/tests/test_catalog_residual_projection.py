@@ -508,6 +508,45 @@ def test_fable_request_construction_and_fail_closed_substitute():
         pass
 
 
+def test_continuity_request_strips_non_anthropic_message_metadata():
+    tool_use_id = "toolu_catalog_residual"
+    body = build_continuity_request(
+        [
+            {"role": "user", "content": "Record the checkpoint."},
+            {
+                "role": "assistant",
+                "content": [{
+                    "type": "tool_use",
+                    "id": tool_use_id,
+                    "name": "record_checkpoint",
+                    "input": {"checkpoint": "ckpt-obs-test"},
+                }],
+                "tool_calls": [{"id": tool_use_id}],
+                "provider_metadata": {"source": "internal"},
+            },
+            {
+                "role": "tool",
+                "tool_call_id": tool_use_id,
+                "content": "recorded",
+            },
+        ],
+        model=FABLE_PROTOCOL_MODEL,
+    )
+
+    assert body["max_tokens"] == 4096
+    assistant = body["messages"][1]
+    assert set(assistant) == {"role", "content"}
+    assert assistant["content"][0]["type"] == "tool_use"
+    assert body["messages"][2] == {
+        "role": "user",
+        "content": [{
+            "type": "tool_result",
+            "tool_use_id": tool_use_id,
+            "content": "recorded",
+        }],
+    }
+
+
 def _request_header_map(request):
     return {key.lower(): value for key, value in request.header_items()}
 
@@ -1598,6 +1637,8 @@ def test_provider_continuity_live_branches_and_receipt(monkeypatch, tmp_path):
     assert result["provider_continuity_validated"] is False
     assert result["transport"] == "injected"
     assert result["real_network"] is False
+    assert result["bootstrap_max_tokens"] == 512
+    assert result["continuation_max_tokens"] == 4096
     assert result["status"] == "simulated"
     assert result["n"] == 4
     dumped = json.dumps(result)
@@ -1675,7 +1716,18 @@ def test_provider_continuity_live_branches_and_receipt(monkeypatch, tmp_path):
         if '"type": "tool_use"' in json.dumps(call.get("messages") or [])
     ]
     assert replayed_tool_calls
-    assert all(call.get("tools") for call in replayed_tool_calls)
+    projected_replays = [
+        call
+        for call in replayed_tool_calls
+        if '"type": "thinking"' not in json.dumps(call.get("messages") or [])
+    ]
+    assert len(projected_replays) == 2
+    assert all(not call.get("tools") for call in projected_replays)
+    bound_replays = [
+        call for call in replayed_tool_calls if call not in projected_replays
+    ]
+    assert bound_replays
+    assert all(call.get("tools") for call in bound_replays)
 
 
 def test_provider_continuity_cli_dry_run(capsys, monkeypatch):

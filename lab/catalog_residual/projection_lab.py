@@ -56,6 +56,8 @@ PROVIDER_CONTINUITY_CASE_IDS = (
 CHECKPOINT_TOOL_NAME = "record_checkpoint"
 CONTINUITY_UNKNOWN = "UNKNOWN"
 ANSWER_EXCERPT_CHARS = 240
+BOOTSTRAP_MAX_TOKENS = 512
+CONTINUATION_MAX_TOKENS = 4096
 ANTHROPIC_VERSION = "2023-06-01"
 THINKING_BINDING_BETA = "thinking-binding-controls-2026-08-01"
 ANTHROPIC_MESSAGES_URL = "https://api.anthropic.com/v1/messages"
@@ -766,7 +768,7 @@ def build_continuity_request(
     prefix_mismatch_behavior: str = "error",
     tools: Optional[Sequence[dict]] = None,
     tool_choice: Any = None,
-    max_tokens: int = 256,
+    max_tokens: int = CONTINUATION_MAX_TOKENS,
 ) -> dict[str, Any]:
     if model not in PROVIDER_CONTINUITY_MODELS:
         raise ValueError(
@@ -825,6 +827,8 @@ def run_provider_continuity(
         "failure": "",
         "workspace_routing": False,
         "transport": "none",
+        "bootstrap_max_tokens": BOOTSTRAP_MAX_TOKENS,
+        "continuation_max_tokens": CONTINUATION_MAX_TOKENS,
         "usage_total": {},
         "request_count": 0,
     }
@@ -1061,7 +1065,7 @@ def _run_provider_continuity_trial(
         prefix_mismatch_behavior="error",
         tools=tools,
         tool_choice=tool_choice,
-        max_tokens=512,
+        max_tokens=BOOTSTRAP_MAX_TOKENS,
     )
     status_b, body_b, meta_b = _invoke_transport(sender, bootstrap_req, api_key)
     request_count += 1
@@ -1074,6 +1078,10 @@ def _run_provider_continuity_trial(
     has_signed = _has_authentic_signed_bound(authentic)
     in_bound = _commitment_in_bound_thinking(authentic, checkpoint)
     in_observable = _commitment_in_observable(authentic, checkpoint)
+    bootstrap_observable_locations = _observable_commitment_locations(
+        [{"role": "assistant", "content": authentic}],
+        checkpoint,
+    )
     served = classified_b.get("served_model") or ""
     bootstrap_ok = (
         classified_b.get("http_status") == 200
@@ -1106,6 +1114,7 @@ def _run_provider_continuity_trial(
         "has_signed_bound_block": has_signed,
         "commitment_in_bound_thinking": in_bound,
         "commitment_absent_from_observable": not in_observable,
+        "observable_commitment_locations": bootstrap_observable_locations,
         "required_tool_use_present": (
             bool(tool_use) if spec.requires_tool_use else False
         ),
@@ -1144,6 +1153,7 @@ def _run_provider_continuity_trial(
             usage_total=usage_total,
             elapsed_total=elapsed_total,
             request_count=request_count,
+            observable_locations=bootstrap_observable_locations,
         )
 
     assistant = {"role": "assistant", "content": copy.deepcopy(authentic)}
@@ -1230,7 +1240,6 @@ def _run_provider_continuity_trial(
         proj_msgs,
         model=model,
         prefix_mismatch_behavior="error",
-        tools=tools,
     )
     status_p, body_p, meta_p = _invoke_transport(sender, proj_req, api_key)
     request_count += 1
@@ -1857,7 +1866,10 @@ def _to_anthropic_messages(messages: Sequence[Any]) -> list[dict]:
                 )
             )
             continue
-        converted.append(copy.deepcopy(message))
+        converted.append({
+            "role": str(message.get("role") or ""),
+            "content": copy.deepcopy(message.get("content")),
+        })
     return converted
 
 
