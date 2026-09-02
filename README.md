@@ -16,10 +16,6 @@ without claiming that summarization is obsolete.
 
 **Site.** [professorpalmer.github.io/catalog-residual](https://professorpalmer.github.io/catalog-residual/)
 
-**Fable 5.1 protocol note.**
-[`docs/fable-5-1-continuity.html`](docs/fable-5-1-continuity.html)
-tests what remains usable after a prefix rewrite invalidates bound thinking.
-
 **Paper.** [`paper/paper.pdf`](paper/paper.pdf) (same file as
 [`docs/paper.pdf`](docs/paper.pdf)).
 
@@ -63,19 +59,65 @@ on two OpenRouter models (`gpt-5.6-luna`, `gpt-5.6-sol`), $n=3$.
 
 Not tweet-safe: stop summarizing, universal win, ``we solved recap.''
 
+## Fable 5.1 continuity (2026-09-02)
+
+After a client rewrite invalidates prefix-bound thinking, what remains
+usable? Hidden-only checkpoints stay gone. Observable transcript state
+usually continues. Refusals stay in the denominator.
+
+| Gate | Result |
+| --- | --- |
+| Planned full-chain | 15/20 |
+| Qualified full-chain | 15/19 |
+| Hidden Catalog residual | 8/9 `UNKNOWN`, 1 refusal |
+| Observable Catalog residual | 9/10 exact, 1 refusal |
+| No-state control | 19/19 `UNKNOWN` |
+| Inventions | 0 |
+| Requests | 98 hashed ids |
+| Confirmatory estimate | $0.89 at Fable list rates |
+
+![Confirmatory matrix](docs/images/fable-hero.png)
+
+![Causal trace](docs/images/fable-causal-trace.png)
+
+![Every confirmatory trial](docs/images/fable-trials.png)
+
+Audit files, not the HTML:
+
+- [Aggregate metrics](docs/data/fable-continuity-metrics.json)
+- [Per-leg receipt](docs/data/fable-continuity-receipt.json)
+- [Run ledger](docs/data/fable-run-ledger.json)
+- [Markdown audit page](docs/fable-5-1-continuity.md)
+
+```
+receipt SHA-256  b2257f547cf065cfbaa3bb1cf8291ffde006186e52de9319022c6d20962dfd8d
+```
+
+The [portfolio page](https://professorpalmer.github.io/catalog-residual/fable-5-1-continuity.html)
+is the same run. It does not replace the JSON.
+
+Claim that is supported: after dropping bound thinking, Catalog residual
+hit the predicted target in 8/9 hidden and 9/10 observable trials.
+Claim that is not: it recovered discarded reasoning, recovered
+hidden-only state, or beat an intact projected tail.
+
 ## Layout
 
 | Path | What |
 | --- | --- |
 | `paper/paper.tex` | LaTeX preprint |
-| `docs/` | GitHub Pages (`index.html` + `paper.pdf`) |
+| `docs/` | GitHub Pages (`index.html`, paper, Fable page) |
+| `docs/data/fable-*.json` | Sanitized Fable continuity receipts |
+| `docs/images/fable-*.png` | Fable report screenshots |
 | `data/published_tables.json` | Sanitized aggregates from live receipts |
 | `notes/COMPACTION_RESIDUAL_LAB.md` | Chronological lab notebook |
 | `lab/catalog_residual/` | Battery, hermetic bench, live runner |
 | `lab/tests/` | Protocol tests (need Marionette on `PYTHONPATH`) |
 
 Raw live receipts stay out of git. They are large and contain residual
-text. Regenerate with the runner.
+text. The Fable public JSON is the exception: allowlisted outcomes only,
+no thinking payloads or residual text. Regenerate compaction-residual
+receipts with the runner.
 
 ## Reproduction
 
