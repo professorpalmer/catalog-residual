@@ -6,4 +6,4 @@ This package is the research surface; it is not the shipping GUI.
 
 from __future__ import annotations
 
-__all__ = ["battery", "bench", "live"]
+__all__ = ["battery", "bench", "blocks", "live", "projection", "projection_lab"]

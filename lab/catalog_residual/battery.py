@@ -11,7 +11,8 @@ buried tokens). It is not a measure of production summarizer quality.
 """
 
 from dataclasses import dataclass, field
-from typing import Any
+from types import MappingProxyType
+from typing import Any, Mapping
 
 
 @dataclass(frozen=True)
@@ -29,9 +30,11 @@ class ResidualCase:
     # True when the live lab must hide peek_history so vault retrieve is
     # the only recovery path. Default stays peek-visible.
     hide_peek: bool = False
+    next_action_tokens: tuple[str, ...] = ()
+    completed_work_tokens: tuple[str, ...] = ()
 
 
-def _msg(role: str, content: str, **extra: Any) -> dict:
+def _msg(role: str, content: Any, **extra: Any) -> dict:
     row = {"role": role, "content": content}
     row.update(extra)
     return row
@@ -815,6 +818,215 @@ def _vault_recap_false_fire() -> ResidualCase:
     )
 
 
+THINKING_ONLY_NONCE = "theta-think-only-nonce-7c2e"
+THINKING_TOOL_PATH = "src/omega/projected_ledger.py"
+THINKING_NEXT_PATH = "src/omega/next_action_plan.py"
+
+
+def _thinking_only_nonce() -> ResidualCase:
+    history = (
+        _base_system()
+        + _filler_pairs(6, "think-nonce")
+        + [
+            _msg("user", "Continue the current docs pass."),
+            _msg(
+                "assistant",
+                [
+                    {
+                        "type": "thinking",
+                        "thinking": (
+                            "The required fact is "
+                            f"{THINKING_ONLY_NONCE}. Keep it out of the reply."
+                        ),
+                        "signature": "lab-unvalidated-signature",
+                    },
+                    {
+                        "type": "redacted_thinking",
+                        "data": "opaque-redacted-blob",
+                    },
+                    {
+                        "type": "text",
+                        "text": (
+                            "Continuing the docs pass without restating "
+                            "earlier facts."
+                        ),
+                    },
+                ],
+            ),
+        ]
+        # keep_tail starts at this bound turn; filler here is the compactable
+        # middle. last_wins keeps eight pairs after its first bound.
+        + _filler_pairs(8, "think-nonce-after")
+        + _tail()
+    )
+    return ResidualCase(
+        id="thinking_only_nonce",
+        template="thinking_only_nonce",
+        transcript=tuple(history),
+        probe_prompt="What theta-think-only nonce was recorded?",
+        must_contain=(THINKING_ONLY_NONCE,),
+        must_not_contain=("theta-think-only-nonce-0000",),
+        expected_arms=_arm_meta(),
+        catalog_recalls_fact=False,
+    )
+
+
+def _thinking_then_tool() -> ResidualCase:
+    path = THINKING_TOOL_PATH
+    history = (
+        _base_system()
+        + _filler_pairs(4, "think-tool")
+        + [
+            _msg("user", "Please read the assigned ledger module and keep the handle."),
+            _msg(
+                "assistant",
+                [
+                    {
+                        "type": "thinking",
+                        "thinking": (
+                            f"Plan: open {path}, then extract post_invoice. "
+                            "The path must also appear on the tool_use."
+                        ),
+                        "signature": "lab-unvalidated-signature",
+                    },
+                    {
+                        "type": "tool_use",
+                        "id": "call_projected_ledger",
+                        "name": "read_file",
+                        "input": {"path": path},
+                    },
+                    {"type": "text", "text": "reading the assigned ledger"},
+                ],
+                # Pairing-safe id only. The planted path stays in thinking plus
+                # tool_use.input so Marionette can split after this tool round.
+                tool_calls=[{
+                    "id": "call_projected_ledger",
+                    "type": "function",
+                    "function": {"name": "read_file", "arguments": "{}"},
+                }],
+            ),
+            _msg(
+                "tool",
+                "def post_invoice():\n    return the public entry\n",
+                tool_call_id="call_projected_ledger",
+            ),
+            _msg("assistant", "Ledger read complete; post_invoice is the public entry."),
+        ]
+        + _filler_pairs(8, "think-tool-after")
+        + _tail()
+    )
+    return ResidualCase(
+        id="thinking_then_tool",
+        template="thinking_then_tool",
+        transcript=tuple(history),
+        probe_prompt="Which projected ledger file was read?",
+        must_contain=(path,),
+        must_not_contain=("src/omega/legacy_ledger.py",),
+        expected_arms=_arm_meta(),
+        catalog_recalls_fact=True,
+        completed_work_tokens=(path,),
+    )
+
+
+def _thinking_plan_next() -> ResidualCase:
+    path = THINKING_NEXT_PATH
+    history = (
+        _base_system()
+        + _filler_pairs(4, "think-next")
+        + [
+            _msg("user", "What will you do next?"),
+            _msg(
+                "assistant",
+                [
+                    {
+                        "type": "thinking",
+                        "thinking": (
+                            f"Next I will read {path} and then stop. "
+                            "Do not put that path in the visible reply."
+                        ),
+                        "signature": "lab-unvalidated-signature",
+                    },
+                    {
+                        "type": "text",
+                        "text": "I'll continue shortly. No next file chosen yet.",
+                    },
+                ],
+            ),
+        ]
+        + _filler_pairs(8, "think-next-after")
+        + _tail()
+    )
+    return ResidualCase(
+        id="thinking_plan_next",
+        template="thinking_plan_next",
+        transcript=tuple(history),
+        probe_prompt="What file will you read next?",
+        must_contain=(path,),
+        must_not_contain=("src/omega/wrong_next.py",),
+        expected_arms=_arm_meta(),
+        catalog_recalls_fact=False,
+        next_action_tokens=(path,),
+    )
+
+
+def _last_wins_under_projection() -> ResidualCase:
+    history = (
+        _base_system()
+        + [
+            _msg(
+                "user",
+                "please don't write to the live ledger; "
+                "the east replica is the only sink.",
+            ),
+            _msg(
+                "assistant",
+                [
+                    {
+                        "type": "thinking",
+                        "thinking": "Record the incoming write policy without restating it.",
+                        "signature": "lab-unvalidated-signature",
+                    },
+                    {"type": "text", "text": "Noted."},
+                ],
+            ),
+        ]
+        + _filler_pairs(4, "proj-rev-mid")
+        + [
+            _msg(
+                "user",
+                "go ahead and write to the live ledger now; "
+                "the east replica is retired.",
+            ),
+            _msg(
+                "assistant",
+                [
+                    {
+                        "type": "thinking",
+                        "thinking": (
+                            "please don't write to the live ledger; "
+                            "the east replica is the only sink."
+                        ),
+                        "signature": "lab-unvalidated-signature",
+                    },
+                    {"type": "text", "text": "Reversed."},
+                ],
+            ),
+        ]
+        + _filler_pairs(4, "proj-rev-after")
+        + _tail()
+    )
+    return ResidualCase(
+        id="last_wins_under_projection",
+        template="unprefixed_reversal",
+        transcript=tuple(history),
+        probe_prompt="What is the current live-ledger write policy?",
+        must_contain=("write to the live ledger now", "east replica is retired"),
+        must_not_contain=("west replica",),
+        expected_arms=_arm_meta(),
+        catalog_recalls_fact=True,
+    )
+
+
 def _unprefixed_obligation() -> ResidualCase:
     """Experimental: policy prose with no Decision:/CONSTRAINT: prefix.
 
@@ -929,6 +1141,21 @@ EXPERIMENTAL_CASES: tuple[ResidualCase, ...] = (
     _vault_recap_false_fire(),
 )
 
+PROJECTION_CASES: tuple[ResidualCase, ...] = (
+    _thinking_only_nonce(),
+    _thinking_then_tool(),
+    _thinking_plan_next(),
+    _last_wins_under_projection(),
+)
+
+PROJECTION_CASE_IDS: tuple[str, ...] = tuple(case.id for case in PROJECTION_CASES)
+
+
+def projection_cases_by_id() -> Mapping[str, ResidualCase]:
+    """Projection-lab lookup only. Not part of generic bench/live selection."""
+    return MappingProxyType({case.id: case for case in PROJECTION_CASES})
+
 
 def cases_by_id() -> dict[str, ResidualCase]:
+    """Generic bench/live catalog. Projection fixtures are not included."""
     return {case.id: case for case in live_cases() + EXPERIMENTAL_CASES}

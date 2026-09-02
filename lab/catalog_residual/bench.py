@@ -172,6 +172,7 @@ def run_residual_arm(
     arm: str,
     *,
     state_dir: str = "",
+    include_residual_text: bool = False,
 ) -> dict[str, Any]:
     """Run one case/arm through the live compaction seam."""
     if arm not in _ARM_RESIDUAL:
@@ -272,6 +273,8 @@ def run_residual_arm(
             "expected_arms": case.expected_arms,
             "event_kinds": [getattr(e, "kind", "") for e in events],
         }
+        if include_residual_text:
+            receipt["residual_text"] = residual
         return receipt
     finally:
         restore()

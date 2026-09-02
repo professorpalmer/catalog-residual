@@ -82,6 +82,7 @@ Needs a Marionette checkout (product `harness/` seams) and this lab on
 export PYTHONPATH=/path/to/catalog-residual/lab:/path/to/marionette
 python -m catalog_residual.bench          # hermetic, no keys
 python -m catalog_residual.live           # dry-run
+python -m catalog_residual.projection     # Pi_tilde surrogate, no keys
 python -m pytest -q lab/tests
 ```
 

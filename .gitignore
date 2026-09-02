@@ -12,5 +12,5 @@ paper/*.toc
 *.synctex.gz
 .env
 results/*.sqlite
-artifacts/*.json
+artifacts/
 !data/published_tables.json
