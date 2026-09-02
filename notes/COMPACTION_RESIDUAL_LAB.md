@@ -735,3 +735,76 @@ Do not restamp `claim_ready`. Do not add these cells to `live_cases()`.
 Do not tweet “stop summarizing” as a universal win. Summary remains a
 Settings opt-in for people who want a paid paragraph. The factory
 residual stays `catalog`.
+
+## Projection after prefix mutation (experimental, not claim_ready)
+
+Research question: after provider/prefix-bound reasoning is discarded,
+how much task continuity is retained by externalized observable
+execution state? Catalog Residual is not a recovery of hidden
+thinking.
+
+Hermetic runner (no keys):
+
+```
+PYTHONPATH=lab:/path/to/marionette python -m catalog_residual.projection
+PYTHONPATH=lab:/path/to/marionette python -m catalog_residual.projection --provider-continuity
+PYTHONPATH=lab:/path/to/marionette python -m catalog_residual.projection --semantic-continuity
+PYTHONPATH=lab:/path/to/marionette python -m catalog_residual.projection --validate-provider
+```
+
+Receipt schema `catalog_residual_projection/v1` is separate from
+`compaction_residual_live/v2`. Keep four claims distinct:
+
+1. **Fable protocol proof** (`--validate-provider`).
+   `provider_validated` is true only after a real stdlib request to
+   exact `claude-fable-5-1` that (1) bootstraps an authentic signed
+   thinking/redacted_thinking block, (2) observes an explicit prefix
+   binding mismatch on unprojected replay, (3) gets HTTP 200
+   exact-model on the projected replay with no prefix-binding drop,
+   and (4) gets HTTP 200 exact-model on `drop_block` with
+   `prefix_binding_mismatch` reported. A fabricated
+   `lab-unvalidated-signature`, dry-run, missing key, model
+   substitute, or injected transport cannot set it.
+2. **Direct Anthropic task-continuity pilot**
+   (`--provider-continuity`). Authentic generate, prefix mutate,
+   project, deterministic Catalog Residual (`run_residual_arm` /
+   ARM_B), then provider probe. Default model is exact
+   `claude-fable-5-1`. Repeatable `--model` may add exact
+   `claude-opus-5`. `--repeats` defaults to 3. Cells are `hidden_only_checkpoint` and
+   `observable_checkpoint`. Each live trial is bootstrap, unprojected
+   `error` (must be binding mismatch), projected-tail continuation,
+   Catalog-residual-only continuation, and a no-state UNKNOWN
+   control. `drop_block` runs once per model/case. HTTP 200 is not
+   task success. The public receipt is the causal chain without raw
+   chain-of-thought: planned checkpoint, bootstrap gates, dropped
+   block type/bytes/digest, projection flags, residual
+   digest/bytes/containment, per-arm excerpts and scores, usage,
+   elapsed_ms, request count, and request-id SHA-256 plus presence.
+   This is not Fable protocol proof.
+3. **Luna Pi_tilde surrogate** (default hermetic run and
+   `--semantic-continuity`). Catalog is scored on
+   `project_transcript(keep_tail_after_prefix_mutation(...))`.
+   Hidden-only cells report `end_task_success=false` when the
+   required state is absent — that means no hidden-state recovery,
+   not an honesty pass. `invented_concrete_value` flags concrete
+   invented answers (including known Luna `think-nonce-after
+   assistant 7`); `honesty_clean` is `not invented_concrete_value`.
+   Do not read `honesty_clean = not false_recall` as proof against
+   invented values.
+4. **Broader task continuity** remains unproven. None of the
+   rows above justify a general claim that Catalog Residual restores
+   discarded reasoning.
+
+`completed_work_visible` records that completed-work tokens remain in
+observable execution state; `no_repeat_completed_work` is omitted
+because this runner does not watch a continuation agent refrain from
+repeating a tool action.
+
+`wire_protocol_valid` means the projected result has no bound blocks
+and a resolved tool round. `projection_complete` / `projection_approved`
+fail closed if unknown assistant state was encountered, even when the
+remaining wire is syntactically valid.
+
+Raw live artifacts stay gitignored under `artifacts/`. Opt-in cells
+stay out of `live_cases()`. Do not restamp `claim_ready`. Do not
+treat this note as a paper rewrite.

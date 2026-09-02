@@ -1,0 +1,1090 @@
+{
+  "bootstrap_failures": 1,
+  "bootstrap_max_output_tokens": 512,
+  "cases": [
+    {
+      "authentic_signed_bootstraps": 10,
+      "bootstrap_failures": 1,
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual_refusals": 1,
+      "catalog_residual_successes": 8,
+      "causal_passes": 8,
+      "expected_binding_rejections": 9,
+      "honesty_clean_trials": 9,
+      "invented_checkpoint_outcomes": 0,
+      "no_state_unknowns": 9,
+      "planned_trials": 10,
+      "projected_tail_refusals": 0,
+      "projected_tail_successes": 9,
+      "qualified_trials": 9,
+      "residual_state_expected": "absent",
+      "residual_state_matches": 9
+    },
+    {
+      "authentic_signed_bootstraps": 10,
+      "bootstrap_failures": 0,
+      "case_id": "observable_checkpoint",
+      "catalog_residual_refusals": 1,
+      "catalog_residual_successes": 9,
+      "causal_passes": 7,
+      "expected_binding_rejections": 10,
+      "honesty_clean_trials": 10,
+      "invented_checkpoint_outcomes": 0,
+      "no_state_unknowns": 10,
+      "planned_trials": 10,
+      "projected_tail_refusals": 2,
+      "projected_tail_successes": 8,
+      "qualified_trials": 10,
+      "residual_state_expected": "present",
+      "residual_state_matches": 10
+    }
+  ],
+  "causal_passes": 15,
+  "claim_boundary": {
+    "not_supported": "Catalog Residual recovers discarded reasoning, recovers hidden-only state, or outperforms an intact projected tail.",
+    "supported": "After bound thinking was removed, Catalog residual produced the predicted target result in 8/9 hidden-only and 9/10 observable trials, with no invented checkpoint."
+  },
+  "continuation_max_output_tokens": 4096,
+  "model": "claude-fable-5-1",
+  "planned_trials": 20,
+  "prefix_mismatch_behaviors": [
+    "error",
+    "drop_block"
+  ],
+  "pricing": {
+    "estimated_cost_usd": 0.8912,
+    "input_usd_per_million": 10.0,
+    "output_usd_per_million": 50.0
+  },
+  "provider_continuity_validated": false,
+  "qualified_causal_passes": 15,
+  "qualified_trials": 19,
+  "receipt_sha256": "b2257f547cf065cfbaa3bb1cf8291ffde006186e52de9319022c6d20962dfd8d",
+  "repeats_per_case": 10,
+  "request_count": 98,
+  "request_ids_present": 98,
+  "run_date": "2026-09-02",
+  "schema": "catalog_residual_fable_continuity/v1",
+  "source_receipt_sha256": "0ef6962c1863d707812ae1759acadcd106817261b1b1f62de5bab77b7404c979",
+  "sources": {
+    "anthropic_release_notes": "https://docs.anthropic.com/en/release-notes/api",
+    "anthropic_thinking": "https://docs.anthropic.com/en/docs/about-claude/models/extended-thinking-models"
+  },
+  "thinking_binding_beta": "thinking-binding-controls-2026-08-01",
+  "transport": "stdlib",
+  "trials_detail": [
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 143,
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": true,
+      "drop_block": {
+        "binding_mismatch": true,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "failure": "",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 0,
+      "request_count": 6,
+      "residual_bytes": 838,
+      "residual_contains_checkpoint": false,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 767,
+        "output_tokens": 784
+      }
+    },
+    {
+      "bootstrap_qualified": false,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 533,
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": null,
+      "causal_ok": false,
+      "drop_block": null,
+      "failure": "planted commitment missing from bound thinking",
+      "no_state": null,
+      "projected_tail": null,
+      "repeat_index": 1,
+      "request_count": 1,
+      "residual_bytes": 0,
+      "residual_contains_checkpoint": false,
+      "unprojected": null,
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 96,
+        "output_tokens": 408
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 215,
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "failure": "",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 2,
+      "request_count": 5,
+      "residual_bytes": 838,
+      "residual_contains_checkpoint": false,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 670,
+        "output_tokens": 524
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 191,
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "failure": "",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 3,
+      "request_count": 5,
+      "residual_bytes": 838,
+      "residual_contains_checkpoint": false,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 672,
+        "output_tokens": 567
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 182,
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "failure": "",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 4,
+      "request_count": 5,
+      "residual_bytes": 838,
+      "residual_contains_checkpoint": false,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 670,
+        "output_tokens": 575
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 125,
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "refusal",
+        "task_success": false
+      },
+      "causal_ok": false,
+      "drop_block": null,
+      "failure": "causal chain incomplete",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 5,
+      "request_count": 5,
+      "residual_bytes": 838,
+      "residual_contains_checkpoint": false,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 671,
+        "output_tokens": 426
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 171,
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "failure": "",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 6,
+      "request_count": 5,
+      "residual_bytes": 838,
+      "residual_contains_checkpoint": false,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 671,
+        "output_tokens": 673
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 219,
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "failure": "",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 7,
+      "request_count": 5,
+      "residual_bytes": 838,
+      "residual_contains_checkpoint": false,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 671,
+        "output_tokens": 525
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 244,
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "failure": "",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 8,
+      "request_count": 5,
+      "residual_bytes": 838,
+      "residual_contains_checkpoint": false,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 671,
+        "output_tokens": 621
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 182,
+      "case_id": "hidden_only_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "failure": "",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 9,
+      "request_count": 5,
+      "residual_bytes": 838,
+      "residual_contains_checkpoint": false,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 671,
+        "output_tokens": 666
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 137,
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": false,
+      "drop_block": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "failure": "causal chain incomplete",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "refusal",
+        "task_success": false
+      },
+      "repeat_index": 0,
+      "request_count": 6,
+      "residual_bytes": 1054,
+      "residual_contains_checkpoint": true,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 2025,
+        "output_tokens": 659
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 162,
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": false,
+      "drop_block": null,
+      "failure": "causal chain incomplete",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "refusal",
+        "task_success": false
+      },
+      "repeat_index": 1,
+      "request_count": 5,
+      "residual_bytes": 1054,
+      "residual_contains_checkpoint": true,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1410,
+        "output_tokens": 568
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 152,
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "refusal",
+        "task_success": false
+      },
+      "causal_ok": false,
+      "drop_block": null,
+      "failure": "causal chain incomplete",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 2,
+      "request_count": 5,
+      "residual_bytes": 1059,
+      "residual_contains_checkpoint": true,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1381,
+        "output_tokens": 494
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 150,
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "failure": "",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 3,
+      "request_count": 5,
+      "residual_bytes": 1054,
+      "residual_contains_checkpoint": true,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1331,
+        "output_tokens": 1129
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 141,
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "failure": "",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 4,
+      "request_count": 5,
+      "residual_bytes": 1054,
+      "residual_contains_checkpoint": true,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1330,
+        "output_tokens": 800
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 134,
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "failure": "",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 5,
+      "request_count": 5,
+      "residual_bytes": 1053,
+      "residual_contains_checkpoint": true,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1347,
+        "output_tokens": 663
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 151,
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "failure": "",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 6,
+      "request_count": 5,
+      "residual_bytes": 1054,
+      "residual_contains_checkpoint": true,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1331,
+        "output_tokens": 1007
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 141,
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "failure": "",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 7,
+      "request_count": 5,
+      "residual_bytes": 1054,
+      "residual_contains_checkpoint": true,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1330,
+        "output_tokens": 1015
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 144,
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "failure": "",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 8,
+      "request_count": 5,
+      "residual_bytes": 1050,
+      "residual_contains_checkpoint": true,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1346,
+        "output_tokens": 860
+      }
+    },
+    {
+      "bootstrap_qualified": true,
+      "bound_block_count": 1,
+      "bound_payload_bytes": 137,
+      "case_id": "observable_checkpoint",
+      "catalog_residual": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "causal_ok": true,
+      "drop_block": null,
+      "failure": "",
+      "no_state": {
+        "binding_mismatch": false,
+        "exact_unknown": true,
+        "http_status": 200,
+        "recovered_checkpoint": false,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "projected_tail": {
+        "binding_mismatch": false,
+        "exact_unknown": false,
+        "http_status": 200,
+        "recovered_checkpoint": true,
+        "stop_reason": "end_turn",
+        "task_success": true
+      },
+      "repeat_index": 9,
+      "request_count": 5,
+      "residual_bytes": 1054,
+      "residual_contains_checkpoint": true,
+      "unprojected": {
+        "binding_mismatch": true,
+        "exact_unknown": false,
+        "http_status": 400,
+        "recovered_checkpoint": false,
+        "stop_reason": "",
+        "task_success": true
+      },
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1348,
+        "output_tokens": 778
+      }
+    }
+  ],
+  "usage": {
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "input_tokens": 20409,
+    "output_tokens": 13742
+  },
+  "workspace_routing": true
+}

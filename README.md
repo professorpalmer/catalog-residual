@@ -16,6 +16,10 @@ without claiming that summarization is obsolete.
 
 **Site.** [professorpalmer.github.io/catalog-residual](https://professorpalmer.github.io/catalog-residual/)
 
+**Fable 5.1 protocol note.**
+[`docs/fable-5-1-continuity.html`](docs/fable-5-1-continuity.html)
+tests what remains usable after a prefix rewrite invalidates bound thinking.
+
 **Paper.** [`paper/paper.pdf`](paper/paper.pdf) (same file as
 [`docs/paper.pdf`](docs/paper.pdf)).
 
@@ -82,6 +86,7 @@ Needs a Marionette checkout (product `harness/` seams) and this lab on
 export PYTHONPATH=/path/to/catalog-residual/lab:/path/to/marionette
 python -m catalog_residual.bench          # hermetic, no keys
 python -m catalog_residual.live           # dry-run
+python -m catalog_residual.projection     # Pi_tilde surrogate, no keys
 python -m pytest -q lab/tests
 ```
 

@@ -1,0 +1,240 @@
+{
+  "attempts": [
+    {
+      "artifact": "fable-protocol.json",
+      "artifact_sha256": "340acf8d0dfc006a798f4d4cc358e5b0131dad212fc430b9574999f2ce63df5b",
+      "causal_passes": 0,
+      "completed_requests": 1,
+      "estimated_cost_usd": null,
+      "evidence_kind": "pi_p_c",
+      "model": [
+        "claude-fable-5-1"
+      ],
+      "outcome": "causal_gate_not_met",
+      "planned_trials": 1,
+      "qualified_causal_passes": 0,
+      "qualified_trials": 0,
+      "rows_recorded": 0,
+      "selected_confirmatory_receipt": false,
+      "source_status": "unvalidated",
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "usage_reported": false
+    },
+    {
+      "artifact": "fable-protocol-v2.json",
+      "artifact_sha256": "25c39229da2893f4b8a9e3fb14ba86311a5df38d1cf64f38de631e0b59910513",
+      "causal_passes": 1,
+      "completed_requests": 4,
+      "estimated_cost_usd": null,
+      "evidence_kind": "pi_p_c",
+      "model": [
+        "claude-fable-5-1"
+      ],
+      "outcome": "ok",
+      "planned_trials": 1,
+      "qualified_causal_passes": 0,
+      "qualified_trials": 0,
+      "rows_recorded": 0,
+      "selected_confirmatory_receipt": false,
+      "source_status": "ok",
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "usage_reported": false
+    },
+    {
+      "artifact": "fable-continuity-v1.json",
+      "artifact_sha256": "d643877e88abc1179e74fe48d5a6c45e466b2619af03425dc5836280333438b6",
+      "causal_passes": 3,
+      "completed_requests": 32,
+      "estimated_cost_usd": 0.2217,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "model": [
+        "claude-fable-5-1"
+      ],
+      "outcome": "full_multi_arm_gate_not_met",
+      "planned_trials": 6,
+      "qualified_causal_passes": 3,
+      "qualified_trials": 6,
+      "rows_recorded": 6,
+      "selected_confirmatory_receipt": false,
+      "source_status": "unvalidated",
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 5373,
+        "output_tokens": 3359
+      },
+      "usage_reported": true
+    },
+    {
+      "artifact": "fable-observable-smoke-v2.json",
+      "artifact_sha256": "03be79213eed69430414898b6b0aaca897ba40ef446f975555ce61a6362f846d",
+      "causal_passes": 1,
+      "completed_requests": 6,
+      "estimated_cost_usd": 0.049,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "model": [
+        "claude-fable-5-1"
+      ],
+      "outcome": "ok",
+      "planned_trials": 1,
+      "qualified_causal_passes": 1,
+      "qualified_trials": 1,
+      "rows_recorded": 1,
+      "selected_confirmatory_receipt": false,
+      "source_status": "ok",
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 2379,
+        "output_tokens": 505
+      },
+      "usage_reported": true
+    },
+    {
+      "artifact": "fable-continuity-v2.json",
+      "artifact_sha256": "2840804a8ff16735787f37882242ac80ac2bc2d377c2c7dc13d2d3240a9c282f",
+      "causal_passes": 5,
+      "completed_requests": 32,
+      "estimated_cost_usd": 0.2784,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "model": [
+        "claude-fable-5-1"
+      ],
+      "outcome": "full_multi_arm_gate_not_met",
+      "planned_trials": 6,
+      "qualified_causal_passes": 5,
+      "qualified_trials": 6,
+      "rows_recorded": 6,
+      "selected_confirmatory_receipt": false,
+      "source_status": "unvalidated",
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 7965,
+        "output_tokens": 3976
+      },
+      "usage_reported": true
+    },
+    {
+      "artifact": "fable-continuity-confirmatory-v1.json",
+      "artifact_sha256": "f30a5771ade4ea88bf0cb32e17c1194d76083eacaebae8fa39a124e246890c46",
+      "causal_passes": 12,
+      "completed_requests": 62,
+      "estimated_cost_usd": 0.457,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "model": [
+        "claude-fable-5-1"
+      ],
+      "outcome": "transport_reset",
+      "planned_trials": 20,
+      "qualified_causal_passes": 12,
+      "qualified_trials": 12,
+      "rows_recorded": 12,
+      "selected_confirmatory_receipt": false,
+      "source_status": "error",
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 10934,
+        "output_tokens": 6954
+      },
+      "usage_reported": true
+    },
+    {
+      "artifact": "fable-continuity-confirmatory-v2.json",
+      "artifact_sha256": "b8f5b3dd6fcb6a44283a15d5b9f2bb8a1c2dfd90deacf2080ef39a34f23129be",
+      "causal_passes": 18,
+      "completed_requests": 94,
+      "estimated_cost_usd": 0.8343,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "model": [
+        "claude-fable-5-1"
+      ],
+      "outcome": "qualified_gate_passed_with_setup_failures",
+      "planned_trials": 20,
+      "qualified_causal_passes": 18,
+      "qualified_trials": 18,
+      "rows_recorded": 20,
+      "selected_confirmatory_receipt": false,
+      "source_status": "unvalidated",
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 23740,
+        "output_tokens": 11937
+      },
+      "usage_reported": true
+    },
+    {
+      "artifact": "fable-observable-no-schema-smoke-v1.json",
+      "artifact_sha256": "54829d3790b736b2e6054d0269eb319569e1839231f79ba6b88b7625da58b527",
+      "causal_passes": 1,
+      "completed_requests": 6,
+      "estimated_cost_usd": 0.0612,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "model": [
+        "claude-fable-5-1"
+      ],
+      "outcome": "ok",
+      "planned_trials": 1,
+      "qualified_causal_passes": 1,
+      "qualified_trials": 1,
+      "rows_recorded": 1,
+      "selected_confirmatory_receipt": false,
+      "source_status": "ok",
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1964,
+        "output_tokens": 832
+      },
+      "usage_reported": true
+    },
+    {
+      "artifact": "fable-continuity-confirmatory-v3.json",
+      "artifact_sha256": "0ef6962c1863d707812ae1759acadcd106817261b1b1f62de5bab77b7404c979",
+      "causal_passes": 15,
+      "completed_requests": 98,
+      "estimated_cost_usd": 0.8912,
+      "evidence_kind": "anthropic_task_continuity_pilot",
+      "model": [
+        "claude-fable-5-1"
+      ],
+      "outcome": "full_multi_arm_gate_not_met",
+      "planned_trials": 20,
+      "qualified_causal_passes": 15,
+      "qualified_trials": 19,
+      "rows_recorded": 20,
+      "selected_confirmatory_receipt": true,
+      "source_status": "unvalidated",
+      "usage": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 20409,
+        "output_tokens": 13742
+      },
+      "usage_reported": true
+    }
+  ],
+  "cost_scope": "Excludes artifacts without usage fields and the unreceipted event.",
+  "reported_usage_estimated_cost_usd": 2.7928,
+  "run_date": "2026-09-02",
+  "schema": "catalog_residual_fable_run_ledger/v1",
+  "scope": "Self-reported local artifacts; not a provider billing export.",
+  "unreceipted_events": [
+    {
+      "event": "Three-repeat budget pilot stopped before receipt write",
+      "reason": "Superseded when the continuation output allowance increased from 1,024 to 4,096 tokens."
+    }
+  ]
+}
